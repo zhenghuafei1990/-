@@ -40,7 +40,6 @@
                     </div>
                     <div class="param-row">
                         <span class="param-label">
-<<<<<<< HEAD
                             类型
                         </span>
                         <span class="c6 fz20">
