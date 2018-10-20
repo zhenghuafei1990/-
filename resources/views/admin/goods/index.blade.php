@@ -96,7 +96,9 @@
                             {{$v->gname}}
                         </td>
                         <td class=" ">
-                           <img src="{{$res->gpic}}" width="100">
+
+                           <img src="/{{$v->picture}}" width="100">
+
                         </td>
                         <td class=" ">
                             {{$v->price}}
@@ -115,8 +117,10 @@
                             {{$v->addtime}}
                         </td>
                         <td class=" ">
-                            <a class="btn btn-primary" href="/admin/user/{{$v->uid}}/edit">修改</a>
-                            <form action="/admin/user/{{$v->uid}}" method="post" style="display: inline;">
+
+                            <a class="btn btn-primary" href="/admin/goods/{{$v->id}}/edit">修改</a>
+                            <form action="/admin/goods/{{$v->id}}" method="post" style="display: inline;">
+
                                 {{csrf_field()}}
                                 {{method_field('DELETE')}}
                                 <button class="btn btn-danger">删除</button>

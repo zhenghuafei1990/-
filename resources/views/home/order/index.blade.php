@@ -21,7 +21,10 @@
                         <table class="table text-center">
                             <tr>
                                 <th width="380">
-                                    商品信息
+
+                                    订单信息
+
+
                                 </th>
                                 <th width="85">
                                     总价
@@ -39,74 +42,97 @@
                                     交易操作
                                 </th>
                             </tr>
+
+
+                            @foreach($order as $k=>$v)
                             <tr class="order-item">
-                                <td>
+                                <td style='text-align:center'>
                                     <label>
-                                        <a href="udai_order_detail.html" class="num">
-                                            {{$order->addtime}} 订单号: {{$order->oid}}
+                                        <a href="udai_order_detail.html" class="num" style='text-align:center'>
+                                            {{$v->addtime}} 
                                         </a>
-                                        <div class="card">
-                                            <div class="img">
-                                                <img src="{{$detail[0]['img']}}" alt="" class="cover">
+                                        <div class="name ep2">
+                                            订单号: {{$v->oid}}
+                                            <div class="name ep2">
+                                                收货人:{{$v->oname}}
                                             </div>
                                             <div class="name ep2">
-                                                {{$detail[0]['name']}}
+                                                收货地址:{{$v->address}}
                                             </div>
                                             <div class="format">
-                                                {{$detail[0]['type']}}
+                                                收货电话:{{$v->phone}}
+
+
                                             </div>
                                         </div>
                                     </label>
                                 </td>
                                 <td>
-                                    ￥{{$order->total}}
+
+
+                                    ￥{{$v->total}}
                                 </td>
                                 <td>
-                                   {{$order->num}}
+                                   {{$v->num}}
                                 </td>
                                 <td>
-                                    ￥{{$order->total}}
+                                    ￥{{$v->total}}
+
+
                                     <br>
                                     <span class="fz12 c6 text-nowrap">
                                         (含运费: ¥0.00)
                                     </span>
                                 </td>
                                 <td class="state">
-                                	@if($order->status == 0)新订单
-                                	@elseif($order->status == 1)已发货<br><a href="/home/order/finish/{{$order->oid}}">确认收货</a>
-                                	@elseif($order->status == 2)完成订单
-                                	@elseif($order->status == 3)无效订单
+
+                                	@if($v->status == 0)新订单
+                                	@elseif($v->status == 1)已发货<br><a href="/home/order/finish/{{$v->oid}}">确认收货</a>
+                                	@elseif($v->status == 2)完成订单
+                                	@elseif($v->status == 3)无效订单
                                 	@endif
                                 </td>
                                 <td class="order">
-                                	<a href="/home/order/{{$order->oid}}" class="but c6">
+                                	<a href="/home/order/{{$v->oid}}" class="but c6">
                                         订单详情
                                     </a>
-                                    <a href="/home/comment/create/{{$order->oid}}" class="but c6">评价</a>
-                                    @if($order->status !=2)
-                                    <a href="/home/order/invalid/{{$order->oid}}" class="but c6">
+                                    @if($v->status !=2)
+                                    <a href="/home/order/invalid/{{$v->oid}}" class="but c6">
+
+
                                         取消订单
                                     </a>
                                     @endif
                                 </td>
                             </tr>
+
+
+                            @endforeach
                         </table>
-                        <div class="page text-right clearfix" style="margin-top: 40px">
-                            <a class="disabled">
-                                上一页
-                            </a>
-                            <a class="select">
-                                1
-                            </a>
-                            <a href="">
-                                2
-                            </a>
-                            <a href="">
-                                3
-                            </a>
-                            <a class="" href="">
-                                下一页
-                            </a>
+                        <style type="text/css">                 
+                            .pagination li  {
+                                float:left;
+                                color: #666;
+                                padding: 10px 15px;
+                                margin: 5px;
+                                line-height: 1em;
+                                border: 1px solid #999;
+                                display: inline-block;
+                                text-decoration: none;
+                                cursor: pointer;
+                            }
+                            .pagination .active {
+                                    background-color: #b31e22;
+                                    color: #fff;
+                                    border: none;
+                                    background-image: none;
+                                    box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.25);
+                            }
+                        </style>
+                        <div class="dataTables_paginate paging_full_numbers" id='fenye' style="margin-top: 40px;float:right">
+                            {{$order->links()}}
+
+
                         </div>
                     </div>
                 </div>

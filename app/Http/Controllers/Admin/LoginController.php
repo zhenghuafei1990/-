@@ -9,7 +9,6 @@ use Gregwar\Captcha\PhraseBuilder;
 use App\Model\Admin\User;
 
 
-
 class LoginController extends Controller
 {
     public function login()
@@ -65,6 +64,7 @@ class LoginController extends Controller
         header("Content-Type:image/jpeg");
         $builder->output();
     }
+
 
     /**
      *  Display a listing of the resource.
@@ -167,4 +167,5 @@ class LoginController extends Controller
 
         return redirect('/admin/login');
     } 
+
 }

@@ -14,7 +14,11 @@
 	                    <div class="cat-box">
 	                        <div class="title">
 	                            <i class="iconfont icon-skirt ce"></i>{{$v->tname}}
-	                        </div>
+
+
+	                        </div>	
+
+
 	                        <ul class="cat-list clearfix">
 	                            @foreach($v->sub as $kk=>$vv)
 	                            <li>{{$vv->tname}} </li> 
@@ -22,14 +26,20 @@
 	                        </ul>
 	                        <div class="cat-list__deploy">
 	                            <div class="deploy-box">
-	                                <div class="genre-box clearfix">
-	                                    <span class="title">{{$v->tname}}：</span>    
-	                                    <div class="genre-list"> 
-	                                     @foreach($v->sub as $kk=>$vv)                                 
-	                                     <a href="">{{$vv->tname}}</a> 
-	                                     @endforeach                        
-	                                    </div>                                                 
-	                                </div>                               
+
+
+	                                 <div class="genre-box clearfix">
+	                                 	@foreach($v->sub as $kk=>$vv)
+										<span class="title">{{$vv->tname}}：</span>
+										<div>
+											@foreach($vv->sub as $kkk=>$vvv)
+											<a href="/home/goods/list/{{$vvv->tid}}" style="color:white;text-decoration:none;margin-left:5px;font-size:16px;">{{$vvv->tname}}</a>
+											@endforeach					
+										</div>
+										@endforeach
+									</div>                            
+
+
 	                            </div>           
 	                        </div>
 	                    </div> 
@@ -148,6 +158,7 @@
 				</div>
 				<div class="con-box">
 					<a class="left-img hot-img" href="">
+<<<<<<< HEAD
 						<img src="/uploads/goods/2.jpg" alt="" class="cover">
 					</a>
 				
@@ -169,6 +180,7 @@
 						@endforeach
 					</div>
 				
+
 				</div>
 			</div>
 			<div class="pull-right">
@@ -206,7 +218,9 @@
 							</a>
 						</div>
 						<div class="but-div">
+
 							<a href="home/selling">
+
 								<i class="but-icon"></i>
 								<p>热卖专区</p>
 							</a>

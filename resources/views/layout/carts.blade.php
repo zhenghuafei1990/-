@@ -111,6 +111,7 @@
 			</div>
 		</div>
 		<div class="footer-links inner">
+\
 
 			@php
 				$res = DB::table('friend')->get();
@@ -123,6 +124,7 @@
                @endforeach
             </dl>
 
+\
 			<dl>
 				<dt>U袋网</dt>
 				<a href="temp_article/udai_article10.html"><dd>企业简介</dd></a>

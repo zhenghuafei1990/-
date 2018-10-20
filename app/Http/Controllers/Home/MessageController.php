@@ -90,7 +90,7 @@ class MessageController extends Controller
 
         //获取token
         $token = session('token');
-        
+
 
         if($tokens != $token){
             return redirect('/home/message')->with('error','注册未成功');

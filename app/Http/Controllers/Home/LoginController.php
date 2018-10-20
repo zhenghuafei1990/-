@@ -8,8 +8,9 @@ use DB;
 use Hash;
 use Session;
 use App\Model\Admin\Message;
-use App\Model\Admin\User;
-use Config;
+
+
+>>>>>>> 85de3f5388d6323db592310eea49dd6fe10398cb
 
 
 class LoginController extends Controller

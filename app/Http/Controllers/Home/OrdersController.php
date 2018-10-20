@@ -8,6 +8,9 @@ use App\Http\Controllers\Controller;
 use App\Model\Admin\Orders;
 use App\Model\Admin\Details;
 use App\Model\Home\Cart;
+
+use App\Model\Home\Comment;
+
 use DB;
 
 class OrdersController extends Controller
@@ -54,6 +57,14 @@ class OrdersController extends Controller
             $count += $value['count'];
         }
         return $count;
+    }
+
+
+    //获取用户的uid
+    public function getUid()
+    {
+      $uid = session('mid');
+      return $uid;
     }
 
 
@@ -123,6 +134,8 @@ class OrdersController extends Controller
         $data = [
             'addtime' => date('Y-m-d H:i:s'),
             'oid'=> $this->oid,
+
+            'uid'=>$this->getUid(),
             'oname'=> $request->input('oname'),
             'address'=> $request->input('address'),
             'phone'=> $request->input('phone'),
@@ -153,23 +166,19 @@ class OrdersController extends Controller
     //前台交易完成
     public function finish($oid)
     {
-      $data['status'] = 2;
-      // dd($data['status']);
-
-      Orders::where('oid',$oid)->update($data,true);
-
-      return redirect('/home/order/index');
+     Orders::where('oid',$oid)->update([ 'status' => 2 ]);
+      return back();
 
     }
 
     //无效订单
     public function invalid($oid)
     {
-      $data['status'] = 3;
 
-      Orders::where('oid',$oid)->update($data,true);
+     Orders::where('oid',$oid)->update([ 'status' => 3 ]);
 
-      return redirect('/home/order/index');
+      return back();
+
     }
 
 
@@ -180,22 +189,19 @@ class OrdersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
-    {
-        //从数据库获取数据
-        $order = DB::table('orders')->first();
-        // dd($order->oid);
-        $detail = Details::where('oid',$order->oid)->get();
-        // dd($detail);
-        
-        // var_dump($order);
-        // die;
 
-        return view('/home/order/index',[
-            'title'=>'我的订单',
-            'order'=>$order,
-            'detail'=>$detail
-        ]);
+    public function index(Request $request)
+    {
+      $uid = session('mid');
+
+      //从数据库获取数据
+      $order = Orders::where('uid',$uid)->orderBy('id','desc')->paginate(2);
+        
+      return view('/home/order/index',[
+          'title'=>'我的订单',
+          'order'=>$order
+      ]);
+
     }
 
     /**
@@ -230,13 +236,15 @@ class OrdersController extends Controller
         $detail = Details::where('oid',$oid)->get();
         $order = Orders::where('oid',$oid)->get();
 
-        // dd($order);
-        // dd($detail);
+
+
 
         return view('/home/order/detail',[
             'title'=>'订单详情页',
             'detail'=>$detail,
-            'order'=>$order
+
+            'order'=>$order,
+
         ]);
     }
 

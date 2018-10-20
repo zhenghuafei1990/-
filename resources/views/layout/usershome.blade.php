@@ -15,7 +15,11 @@
 	<script src="/home/js/global.js" charset="UTF-8"></script>
 	<script src="/home/js/jquery.DJMask.2.1.1.js" charset="UTF-8"></script>
 
+
+
 	<script src="/home/js/jquery.3.2.1.min.js" charset="UTF-8"></script>
+
+
 	
 	<title>@yield('title')</title>
 </head>
@@ -60,9 +64,11 @@
 			</dl>
 			<dl class="user-center__nav">
 				<dt>订单中心</dt>
-				<a href="udai_order.html"><dd>我的订单</dd></a>
+
+				<a href="/home/orders"><dd>我的订单</dd></a>
 				<a href="udai_collection.html"><dd>我的收藏</dd></a>
-				<a href="udai_refund.html"><dd>退款/退货</dd></a>
+				<a href="/home/retreat/index"><dd>退款/退货</dd></a>
+
 			</dl>
 			<dl class="user-center__nav">
 				<dt>新手上路</dt>
@@ -115,6 +121,7 @@
 			</div>
 		</div>
 		<div class="footer-links inner">
+
 			@php
 				$res = DB::table('friend')->get();
 			@endphp
@@ -125,6 +132,7 @@
                 <a href="{{$v->url}}"><dd>{{$v->fname}}</dd></a>
                @endforeach
             </dl>
+
 			<dl>
 				<dt>U袋网</dt>
 				<a href="temp_article/udai_article10.html"><dd>企业简介</dd></a>

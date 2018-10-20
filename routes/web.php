@@ -36,6 +36,7 @@ Route::group(['middleware'=>'adminlogin'],function(){
 	//后台的用户模块
 	Route::resource('admin/user','Admin\UserController');
 
+
 	//修改头像
 	Route::any('admin/profile','Admin\LoginController@profile');
 	Route::any('admin/doprofile','Admin\LoginController@doprofile');
@@ -46,6 +47,7 @@ Route::group(['middleware'=>'adminlogin'],function(){
 
 	//退出后台
 	Route::any('admin/logout','Admin\LoginController@logout');
+
 
 	//后台的分类模块
 	Route::resource('/admin/cate','Admin\CateController');
@@ -68,6 +70,7 @@ Route::group(['middleware'=>'adminlogin'],function(){
 	//友情链接
 	Route::resource('admin/friend', 'Admin\FriendController');
 
+
 	//商品推荐
 	Route::resource('admin/ecommend', 'Admin\EcommendController');
 
@@ -76,10 +79,26 @@ Route::group(['middleware'=>'adminlogin'],function(){
 
 	//后台的商品模块
 	Route::resource('/admin/goods','Admin\GoodsController');
+
+
+	//后台商品主图删除
+	Route::any('/admin/goods/picture/{id}','Admin\GoodsController@picture');
+
+
 	//后台订单管理
 	Route::resource('admin/orders','Admin\OrdersController');
 	//后台发货
 	Route::any('/admin/orders/send/{id}','Admin\OrdersController@send');
+
+
+	//后台查看评论
+	Route::any('/admin/comment/index','Admin\CommentController@index');
+	//后台退货管理
+	Route::any('/admin/retreat/index','Admin\RetreatController@index');
+	//后台退货
+	Route::any('/admin/retreat/send/{id}','Admin\RetreatController@send');
+
+
 
 
 
@@ -142,13 +161,34 @@ Route::group([],function(){
 	//无效订单
 	Route::any('/home/order/invalid/{id}','Home\OrdersController@invalid');
 
-	//评论管理
-	Route::any('/home/comment/create/{id}','Home\CommentController@create');
 	//推荐商品
 	Route::any('/home/ecommend/{id}','Home\EcommendController@ecommend');
 
 	//热卖商品
 	Route::any('/home/selling','Home\SellingController@selling');
+
+	//评论管理
+
+	Route::any('/home/comment/comments/{id}','Home\CommentController@comments');
+	//添加评论
+	Route::any('/home/comment/create/{id}','Home\CommentController@create');
+	//查看评论
+	Route::any('/home/comment/index/{id}','Home\CommentController@index');
+	//删除评论
+	Route::any('/home/comment/delete/{id}','Home\CommentController@delete');
+	//申请退货
+	Route::any('/home/retreat/retreat/{id}','Home\RetreatController@retreat');
+	Route::any('/home/retreat/create/{id}','Home\RetreatController@create');
+	//退货页面
+	Route::any('/home/retreat/index','Home\RetreatController@index');
+
+	Route::any('/home/comment/create/{id}','Home\CommentController@create');
+
+	//前台商品列表页
+	Route::any('/home/goods/list/{id}','Home\GoodsController@list');
+	//前台商品详情页
+	Route::any('/home/goods/details/{id}','Home\GoodsController@details');
+
 
 });
 

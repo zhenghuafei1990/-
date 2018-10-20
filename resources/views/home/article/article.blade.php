@@ -4,6 +4,7 @@
 
 @section('content')
 
+
 <!-- 首页导航栏 -->
 
 	<div class="content inner">

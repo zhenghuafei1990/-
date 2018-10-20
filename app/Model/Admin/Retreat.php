@@ -4,17 +4,17 @@ namespace App\Model\Admin;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Details extends Model
+class Retreat extends Model
 {
-	/**
+    /**
      * 与模型关联的数据表
      *
      * @var string
      */
-    protected $table = 'detail';
+    protected $table = 'retreat';
 
     //主键
-    protected $primaryKey = 'did';
+    protected $primaryKey = 'id';
 
     /**
      * 该模型是否被自动维护时间戳
@@ -29,6 +29,4 @@ class Details extends Model
 	 * @var array
 	 */
 	protected $guarded = [];
-
-
 }

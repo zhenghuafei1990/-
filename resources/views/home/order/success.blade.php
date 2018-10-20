@@ -19,7 +19,9 @@
 
 @section('content')
 <div class="take-delivery" style='margin:120px;'>
-    <img src="/homes/images/successdui.jpg" id='duihao'>
+
+    <img src="/home/images/successdui.jpg" id='duihao'>
+
     <div class="status">
         <h2>
             您已成功付款
@@ -29,7 +31,13 @@
                 <li style='font-size:30px'>
                     付款金额 : &nbsp;
                     <em style='color:red'>
+
                         ¥{{session('countMoney')}}
+
+
+                        ¥{{$rs->total}}
+
+
                     </em>
                 </li>
                 <div id='shouh'>
@@ -58,7 +66,11 @@
                     您可以
                 </span>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;查看
-                <a href="/">
+
+
+                <a href="/home/orders">
+
+
                     <span style='font-size:18px;color:red'>
                         已买到的宝贝
                     </span>
