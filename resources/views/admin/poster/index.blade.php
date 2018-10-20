@@ -25,14 +25,15 @@
                 <label>
                     显示
                     <select size="1" name="num" aria-controls="DataTables_Table_1">
-                        <option value="5" @if($request->num == '5') selected="selected" @endif >
+
+                        <option value="5" @if($request->num == '3') selected="selected" @endif >
+                            3
+                        </option>
+                        <option value="10" @if($request->num == '5') selected="selected" @endif>
                             5
                         </option>
-                        <option value="10" @if($request->num == '10') selected="selected" @endif>
-                            10
-                        </option>
-                        <option value="15" @if($request->num == '15') selected="selected" @endif>
-                            15
+                        <option value="15" @if($request->num == '8') selected="selected" @endif>
+                            8
                         </option>
                     </select>
                     条数据
@@ -46,11 +47,7 @@
                 <button class="btn btn-info">搜索</button>
             </div>
 
-
             </form>
-
-
-
 
             <table class="mws-datatable-fn mws-table dataTable" id="DataTables_Table_1"
             aria-describedby="DataTables_Table_1_info">
@@ -105,7 +102,9 @@
                 <tbody role="alert" aria-live="polite" aria-relevant="all">
 
   				@foreach($rs as $k => $v)
-                    <tr class="">
+
+                    <tr class="@if($k % 2 == 0)odd @else even @endif">
+
                         <td class="">
                     		{{$v->posterid}}
                         </td>

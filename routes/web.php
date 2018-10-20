@@ -36,7 +36,6 @@ Route::group(['middleware'=>'adminlogin'],function(){
 	//后台的用户模块
 	Route::resource('admin/user','Admin\UserController');
 
-
 	//修改头像
 	Route::any('admin/profile','Admin\LoginController@profile');
 	Route::any('admin/doprofile','Admin\LoginController@doprofile');
@@ -70,7 +69,6 @@ Route::group(['middleware'=>'adminlogin'],function(){
 	//友情链接
 	Route::resource('admin/friend', 'Admin\FriendController');
 
-
 	//商品推荐
 	Route::resource('admin/ecommend', 'Admin\EcommendController');
 
@@ -85,11 +83,11 @@ Route::group(['middleware'=>'adminlogin'],function(){
 	Route::any('/admin/goods/picture/{id}','Admin\GoodsController@picture');
 
 
+
 	//后台订单管理
 	Route::resource('admin/orders','Admin\OrdersController');
 	//后台发货
 	Route::any('/admin/orders/send/{id}','Admin\OrdersController@send');
-
 
 	//后台查看评论
 	Route::any('/admin/comment/index','Admin\CommentController@index');
@@ -97,6 +95,9 @@ Route::group(['middleware'=>'adminlogin'],function(){
 	Route::any('/admin/retreat/index','Admin\RetreatController@index');
 	//后台退货
 	Route::any('/admin/retreat/send/{id}','Admin\RetreatController@send');
+
+	//后台视频管理
+	Route::resource('admin/video','Admin\VideoController');
 
 
 
@@ -188,6 +189,12 @@ Route::group([],function(){
 	Route::any('/home/goods/list/{id}','Home\GoodsController@list');
 	//前台商品详情页
 	Route::any('/home/goods/details/{id}','Home\GoodsController@details');
+
+	//前台视频页面
+	Route::any('/home/video','Home\VideoController@index');
+	Route::any('/home/video/select','Home\VideoController@select');
+	Route::any('/home/video/remove','Home\VideoController@remove');
+
 
 
 });

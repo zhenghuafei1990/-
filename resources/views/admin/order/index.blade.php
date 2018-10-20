@@ -127,6 +127,7 @@
                             <a class='btn btn-primary' href="/admin/orders/send/{{$v->oid}}" style='display:inline'>发货</a>
                             @endif
 
+
                         </td>
                     </tr>
                     @endforeach

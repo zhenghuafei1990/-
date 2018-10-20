@@ -1,4 +1,3 @@
-
 @extends('layout.admins')
 
 @section('title', $title)

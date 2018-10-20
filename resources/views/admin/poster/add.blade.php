@@ -6,17 +6,11 @@
 
 @section('content')
 
-
-
-
 <div class="mws-panel grid_8">
 	<div class="mws-panel-header">
     	<span>{{$title}}</span>
     </div>
     <div class="mws-panel-body no-padding">
-
-
-
 
     	<form action="/admin/poster" method='post' enctype='multipart/form-data' class="mws-form">
     		<div class="mws-form-inline">
