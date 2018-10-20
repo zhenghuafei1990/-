@@ -3,28 +3,7 @@
 @section('title',$title)
 
 @section('content')
-<!-- 搜索栏 -->
-	<div class="top-search">
-		<div class="inner">
-			<a class="logo" href="/"><img src="logo/logo.png" alt="万购网" class="cover"></a>
-			<div class="search-box">
-				<form class="input-group">
-					<input placeholder="Ta们都在搜万购网" type="text">
-					<span class="input-group-btn">
-						<button type="button">
-							<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-						</button>
-					</span>
-				</form>
 
-			</div>
-			<div class="cart-box">
-				<a href="/home/cart" class="cart-but">
-					<i class="iconfont icon-shopcart cr fz16"></i> 购物车
-				</a>
-			</div>
-		</div>
-	</div>
 <!-- 首页导航栏 -->
 	<div class="top-nav bg3">
 		<div class="nav-box inner">
@@ -35,7 +14,9 @@
 	                    <div class="cat-box">
 	                        <div class="title">
 	                            <i class="iconfont icon-skirt ce"></i>{{$v->tname}}
-	                        </div>
+
+	                        </div>	
+
 	                        <ul class="cat-list clearfix">
 	                            @foreach($v->sub as $kk=>$vv)
 	                            <li>{{$vv->tname}} </li> 
@@ -43,14 +24,18 @@
 	                        </ul>
 	                        <div class="cat-list__deploy">
 	                            <div class="deploy-box">
-	                                <div class="genre-box clearfix">
-	                                    <span class="title">{{$v->tname}}：</span>    
-	                                    <div class="genre-list"> 
-	                                     @foreach($v->sub as $kk=>$vv)                                 
-	                                     <a href="">{{$vv->tname}}</a> 
-	                                     @endforeach                        
-	                                    </div>                                                 
-	                                </div>                               
+
+	                                 <div class="genre-box clearfix">
+	                                 	@foreach($v->sub as $kk=>$vv)
+										<span class="title">{{$vv->tname}}：</span>
+										<div>
+											@foreach($vv->sub as $kkk=>$vvv)
+											<a href="/home/goods/list/{{$vvv->tid}}" style="color:white;text-decoration:none;margin-left:5px;font-size:16px;">{{$vvv->tname}}</a>
+											@endforeach					
+										</div>
+										@endforeach
+									</div>                            
+
 	                            </div>           
 	                        </div>
 	                    </div> 
@@ -827,7 +812,7 @@
 			</li>
 			<li class="r-toolbar-item">
 				<a href="/home/cart" class="r-item-hd">
-					<i class="iconfont icon-cart" data-badge=""></i>
+					<i class="iconfont icon-cart" data-badge="10"></i>
 					<div class="r-tip__box"><span class="r-tip-text">购物车</span></div>
 				</a>
 			</li>

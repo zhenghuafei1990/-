@@ -270,6 +270,7 @@
                     </li>
 
                     <li>
+
                         <a href="#"><i class="icon-picassa-2"></i>退货管理</a>
                         <ul class='closed'>
                             <li><a href="/admin/retreat/index">退货列表</a></li>
@@ -284,6 +285,7 @@
                     </li>
 
                     <li>
+
                         <a href="#"><i class="icon-users"></i> 前台用户管理</a>
                         <ul class="closed">
                             <li><a href="/admin/message">用户浏览</a></li>

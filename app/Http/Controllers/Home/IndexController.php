@@ -17,6 +17,8 @@ class IndexController extends Controller
 
         $cates = Cate::getCatesubs();
 
+        // dump($cates);die;
+
     	$poster = Poster::get();
 
     	$rs = DB::table('lunbo')->get();

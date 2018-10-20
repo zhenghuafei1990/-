@@ -9,7 +9,6 @@ use App\Model\Admin\Orders;
 use App\Model\Admin\Details;
 use App\Model\Home\Cart;
 use App\Model\Home\Comment;
-
 use DB;
 
 class OrdersController extends Controller
@@ -57,6 +56,7 @@ class OrdersController extends Controller
         }
         return $count;
     }
+
 
     //获取用户的uid
     public function getUid()
@@ -218,7 +218,6 @@ class OrdersController extends Controller
         //
     }
 
-
     /**
      * Display the specified resource.
      *
@@ -229,6 +228,7 @@ class OrdersController extends Controller
     {
         $detail = Details::where('oid',$oid)->get();
         $order = Orders::where('oid',$oid)->get();
+
 
         return view('/home/order/detail',[
             'title'=>'订单详情页',

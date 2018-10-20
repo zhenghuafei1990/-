@@ -26,6 +26,7 @@
 							<tr class='cart_item' id='{{$v->id}}'>
 								<th scope="row">
 									<label class="checked-label"><input type="checkbox" class='ches' gid='{{$v->gid}}'><i></i>
+
 										<div class="img"><img src="{{$v->gimg}}" alt="" class="cover"></div>
 									</label>
 								</th>
@@ -331,6 +332,7 @@ $(function(){
 			dollar: tr.find('.dollar').text(),
 			id: tr.attr('id'),
 			gid:tr.find('.ches').attr('gid'),
+
 		};
 	}
 

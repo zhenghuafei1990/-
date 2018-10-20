@@ -56,6 +56,20 @@
     					<input class="small" type="text" name="stock">
     				</div>
     			</div>
+                <div class="mws-form-row">
+                    <label class="mws-form-label">添加时间</label>
+                    <div class="mws-form-item">
+                        <input class="small" type="text" name="addtime" value="{{date('Y年m月d日 H时i分s秒')}}">
+                    </div>
+                </div>
+                 <div class="mws-form-row">
+                        <label class="mws-form-label">商品主图</label>
+                        <div class="mws-form-item">
+                            <div class="fileinput-holder" style="position: relative;">
+                                <input style="position: absolute; top: 0px; right: 0px; margin: 0px; cursor: pointer; font-size: 999px; opacity: 0; z-index: 999;" type="file" name="picture" style="width:300px;">
+                            </div>
+                        </div>
+                </div>
     			<div class="mws-form-row">
                     	<label class="mws-form-label">商品图片</label>
                     	<div class="mws-form-item">
@@ -64,12 +78,6 @@
                         	</div>
                         </div>
                 </div> 
-                <div class="mws-form-row">
-    				<label class="mws-form-label">添加时间</label>
-    				<div class="mws-form-item">
-    					<input class="small" type="text" name="addtime" value="{{date('Y年m月d日 H时i分s秒')}}">
-    				</div>
-    			</div>
     			 <div class="mws-form-row">
     				<label class="mws-form-label">商品详情</label>
     				<div class="mws-form-item">   				

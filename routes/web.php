@@ -59,16 +59,22 @@ Route::group(['middleware'=>'adminlogin'],function(){
 
 	//后台的商品模块
 	Route::resource('/admin/goods','Admin\GoodsController');
+
+	//后台商品主图删除
+	Route::any('/admin/goods/picture/{id}','Admin\GoodsController@picture');
+
 	//后台订单管理
 	Route::resource('admin/orders','Admin\OrdersController');
 	//后台发货
 	Route::any('/admin/orders/send/{id}','Admin\OrdersController@send');
+
 	//后台查看评论
 	Route::any('/admin/comment/index','Admin\CommentController@index');
 	//后台退货管理
 	Route::any('/admin/retreat/index','Admin\RetreatController@index');
 	//后台退货
 	Route::any('/admin/retreat/send/{id}','Admin\RetreatController@send');
+
 
 
 
@@ -131,6 +137,7 @@ Route::group([],function(){
 	//无效订单
 	Route::any('/home/order/invalid/{id}','Home\OrdersController@invalid');
 	//评论管理
+
 	Route::any('/home/comment/comments/{id}','Home\CommentController@comments');
 	//添加评论
 	Route::any('/home/comment/create/{id}','Home\CommentController@create');
@@ -143,6 +150,14 @@ Route::group([],function(){
 	Route::any('/home/retreat/create/{id}','Home\RetreatController@create');
 	//退货页面
 	Route::any('/home/retreat/index','Home\RetreatController@index');
+
+	Route::any('/home/comment/create/{id}','Home\CommentController@create');
+
+	//前台商品列表页
+	Route::any('/home/goods/list/{id}','Home\GoodsController@list');
+	//前台商品详情页
+	Route::any('/home/goods/details/{id}','Home\GoodsController@details');
+
 
 });
 

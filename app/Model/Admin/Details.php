@@ -31,8 +31,4 @@ class Details extends Model
 	protected $guarded = [];
 
 
-
-
-
-
 }

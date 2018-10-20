@@ -19,6 +19,7 @@ class OrdersController extends Controller
         Orders::where('oid',$oid)->update([ 'status' => 1 ]);
 
         return back();
+
     }
 
 

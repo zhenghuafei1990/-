@@ -1,5 +1,6 @@
 @extends('layout.usershome')
 
+
 @section('title',$title)
 
 @section('content')
@@ -39,6 +40,7 @@
                     </div>
                     <div class="param-row">
                         <span class="param-label">
+<<<<<<< HEAD
                             类型
                         </span>
                         <span class="c6 fz20">
@@ -115,4 +117,5 @@
         alert('评论成功,谢谢评论!!!');
     })
 </script>
+
 @stop
