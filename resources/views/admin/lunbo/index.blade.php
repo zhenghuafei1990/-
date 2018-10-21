@@ -4,12 +4,6 @@
 
 @section('content')
     
-@if(session('success'))  
-<div class="mws-form-message success">
-    {{session('success')}}  
-
-</div>
-@endif
 
 <div class="mws-panel grid_8">
     <div class="mws-panel-header">

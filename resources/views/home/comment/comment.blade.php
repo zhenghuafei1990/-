@@ -1,6 +1,5 @@
 @extends('layout.usershome')
 
-
 @section('title',$title)
 
 @section('content')
@@ -36,11 +35,12 @@
                         </span>
                         <span class="c6 fz20">
                             {{$v->count}}
+
+
                         </span>
                     </div>
                     <div class="param-row">
                         <span class="param-label">
-<<<<<<< HEAD
                             类型
                         </span>
                         <span class="c6 fz20">
@@ -107,15 +107,20 @@
                 </button>
             </div>  
         </form>
+
+
     </div>
 </div>
 @stop
 
+
 @section('js')
+
 <script type="text/javascript">
     $('.but').click(function(){
         alert('评论成功,谢谢评论!!!');
     })
 </script>
+
 
 @stop

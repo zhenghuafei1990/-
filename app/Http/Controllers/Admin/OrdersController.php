@@ -36,7 +36,10 @@ class OrdersController extends Controller
         //单条件查询
         $uname = $request->input('oname');
         //获取数据
+
         $rs = Orders::where('oname','like','%'.$uname.'%')->orderBy('id','desc')
+
+
         ->paginate($request->input('num',5));
 
 

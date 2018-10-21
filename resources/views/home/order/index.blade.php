@@ -21,7 +21,6 @@
                         <table class="table text-center">
                             <tr>
                                 <th width="380">
-
                                     订单信息
 
                                 </th>
@@ -98,7 +97,6 @@
                                     @endif
                                 </td>
                             </tr>
-
                             @endforeach
                         </table>
                         <style type="text/css">                 
@@ -123,7 +121,6 @@
                         </style>
                         <div class="dataTables_paginate paging_full_numbers" id='fenye' style="margin-top: 40px;float:right">
                             {{$order->links()}}
-
                         </div>
                     </div>
                 </div>

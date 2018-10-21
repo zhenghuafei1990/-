@@ -26,7 +26,7 @@ class PosterController extends Controller
                     $query->where('postername','like','%'.$postername.'%');
                 }
             })
-            ->paginate($request->input('num', 5));
+            ->paginate($request->input('num','3'));
 
         return view('admin.poster.index',[
             'title'=>'广告浏览管理',
@@ -161,6 +161,8 @@ class PosterController extends Controller
             $rs = Poster::where('posterid',$id)->update($res);
             if($rs){
                 return redirect('/admin/poster')->with('success','修改成功');
+            } else {
+                return redirect('/admin/poster')->with('success','未进行修改');
             }
         }catch(\Exception $e){
             return redirect('/admin/poster')->with('error','修改失败');

@@ -19,9 +19,7 @@
 
 @section('content')
 <div class="take-delivery" style='margin:120px;'>
-
     <img src="/home/images/successdui.jpg" id='duihao'>
-
     <div class="status">
         <h2>
             您已成功付款

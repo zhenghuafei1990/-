@@ -33,6 +33,8 @@
 <link rel="stylesheet" type="text/css" href="/admins/css/mws-theme.css" media="screen">
 <link rel="stylesheet" type="text/css" href="/admins/css/themer.css" media="screen">
 
+<meta name="csrf-token" content="{{ csrf_token() }}">
+
 <title>@yield('title')</title>
 
 </head>
@@ -197,9 +199,10 @@
                         Hello, {{$rs->username}}
                     </div>
                     <ul>
-                    	<li><a href="#">修改头像</a></li>
-                        <li><a href="#">修改密码</a></li>
-                        <li><a href="index.html">退出登录</a></li>
+                    	<li><a href="/admin/profile">修改头像</a></li>
+                        <li><a href="/admin/pass">修改密码</a></li>
+                        <li><a href="/admin/logout">退出登录</a></li>
+
                     </ul>
                 </div>
             </div>
@@ -260,6 +263,19 @@
                             <li><a href="/admin/goods/create">添加商品</a></li>
                             <li><a href="/admin/goods">浏览商品</a></li>
                         </ul>
+                    </li>
+                     <li>
+                        <a href="#"><i class="icon-shopping-cart"></i> 推荐商品管理</a>
+                        <ul class="closed">
+                            <li><a href="/admin/ecommend">浏览推荐商品</a></li>
+                        </ul>
+                    </li>  
+                    <li>
+                        <a href="#"><i class="icon-shopping-cart"></i>热卖商品管理</a>
+                        <ul class="closed">   
+                            <li><a href="/admin/selling">热卖推荐商品</a></li>
+                        </ul>
+
                     </li>  
 
                     <li>
@@ -270,7 +286,6 @@
                     </li>
 
                     <li>
-
                         <a href="#"><i class="icon-picassa-2"></i>退货管理</a>
                         <ul class='closed'>
                             <li><a href="/admin/retreat/index">退货列表</a></li>
@@ -330,7 +345,14 @@
                             <li><a href="/admin/friend">友情链接浏览</a></li>
                         </ul>
                     </li>
-                    
+
+                    <li>
+                        <a href="#"><i class="icon-play-circle"></i>视频管理</a>
+                        <ul class='closed'>
+                            <li><a href="/admin/video/create">视频添加</a></li>
+                            <li><a href="/admin/video">视频浏览</a></li>
+                        </ul>
+                    </li>
                     
                 </ul>
             </div>         
@@ -406,7 +428,7 @@
 
     <!-- Demo Scripts (remove if not needed) -->
     <script src="/admins/js/demo/demo.dashboard.js"></script>
-     <script src="/admins/js/libs/jquery-1.8.3.min.js"></script>
+    <script src="/admins/js/libs/jquery-1.8.3.min.js"></script>
     <script type="text/javascript" src="/ueditor/ueditor.config.js"></script>
     <script type="text/javascript" src="/ueditor/ueditor.all.min.js"> </script>  
     <script type="text/javascript" src="/ueditor/lang/zh-cn/zh-cn.js"></script>

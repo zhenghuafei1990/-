@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Admin\Goods;
 use App\Model\Admin\Goodsimg;
+
 use App\Model\Admin\Cate;
 use DB;
 class GoodsController extends Controller
@@ -18,7 +19,7 @@ class GoodsController extends Controller
     public function index(Request $request)
     {
          //获取商品图片
-         /*$res=DB::table('goodspicture')->first();*/
+
         //多条件查询
         $rs = Goods::orderBy('id','asc')
         ->where(function($query) use($request){
@@ -98,7 +99,9 @@ class GoodsController extends Controller
                  $request->file('picture')->move('uploads/goods/master/',$name.'.'.$suf);
         }
         $rs['picture'] = 'uploads/goods/master/'.$name.'.'.$suf;
+
         $data = Goods::create($rs);
+
         $id = $data->id;
         $gd = $data::find($id);
         //处理图片
@@ -140,6 +143,7 @@ class GoodsController extends Controller
      */
     public function show($id)
     {
+
         //根据id获取存储图片的路经信息
 
         //删除数据表里面的图片信息   还删除uploads信息吗??
@@ -179,6 +183,7 @@ class GoodsController extends Controller
         }
 
         echo 1;
+
     }
 
     /**
@@ -189,6 +194,7 @@ class GoodsController extends Controller
      */
     public function edit($id)
     {
+
         $rs = Cate::select(DB::raw('*,concat(path,tid) as paths'))->
         orderBy('paths')->get();
 
@@ -214,6 +220,7 @@ class GoodsController extends Controller
             'res'=>$res,
             'gimg'=>$gimg
         ]);
+
     }
 
     /**
@@ -225,7 +232,6 @@ class GoodsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        
         //1.表单验证
         $this->validate($request, [
              'gname' => 'required|regex:/[\x{4e00}-\x{9fa5}]+/u',
@@ -298,6 +304,7 @@ class GoodsController extends Controller
             return back()->with('error','修改失败'); 
 
         }
+
     }
 
     /**
@@ -308,6 +315,7 @@ class GoodsController extends Controller
      */
     public function destroy($id)
     {
+
         //根据id获取图片的路径 unlink
         $res = Goodsimg::where('gid',$id)->get();
 
@@ -346,5 +354,7 @@ class GoodsController extends Controller
         }catch(\Exception $e){
             return back()->with('error','删除失败');
         }
+
+
     }
 }

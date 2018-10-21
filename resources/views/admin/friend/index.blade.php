@@ -4,12 +4,16 @@
 
 @section('content')
     
+<<<<<<< HEAD
+
+=======
 @if(session('success'))  
 <div class="mws-form-message success">
     {{session('success')}}  
 
 </div>
 @endif
+>>>>>>> 许凯旋
 
 <div class="mws-panel grid_8">
     <div class="mws-panel-header">

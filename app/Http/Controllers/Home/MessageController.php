@@ -21,7 +21,6 @@ class MessageController extends Controller
 
     public function create(Request $request)
     {
-
     	//表单验证
         $this->validate($request,[
             'mname' => 'required|regex:/^\w{4,16}$/',
@@ -30,40 +29,36 @@ class MessageController extends Controller
             'phone' =>'regex:/^1[3456789]\d{9}$/',
             'email' =>'email:email',
         ],[
-            'mname.required'=>'用户名不能为空!!',
-            'password.required'=>'密码不能为空',
+            'mname.required' =>'用户名不能为空!',
+            'password.required' =>'用户名不能为空',
             'mname.regex'=>'用户名格式不正确',
             'password.regex'=>'密码格式不正确',
-            'repass.same'=>'两次密码不一致',
+            'repassword.same'=>'两次密码不一致',
             'phone.regex'=>'手机号码格式不正确',
             'email.email'=>'邮箱格式不正确',
         ]);
 
+		$res = $request->except('_token','repassword');
 
-		$rs = $request->except('_token','repassword');
+		$res['password'] = Hash::make($res['password']);
 
-		$rs['password'] = Hash::make($rs['password']);
-
-        $rs['status'] = '0';
+        $res['status'] = '0';
 
         $token = str_random(60);
-
 
         session(['token' => $token]);
 
         try{
-
-            $res = DB::table('message')->insertGetId($rs);
+            $rs = DB::table('message')->insertGetId($res);
         
-            if($res){
+            if($rs){
                 //邮箱验证
-                Mail::send('home.email.emessage', ['id'=>$res,'rs'=>$rs,'token'=>$token], function ($m) use ($rs){
+                Mail::send('home.email.emessage', ['id'=>$rs,'res'=>$res,'token'=>$token], function ($m) use ($res){
                     //从哪发出的邮件
                     $m->from(env('MAIL_USERNAME'), 'wgshop注册中心');
                     //发给谁
-                    $m->to($rs['email'], $rs['mname'])->subject('wgshop注册验证!');
+                    $m->to($res['email'], $res['mname'])->subject('wgshop注册验证!');
 
-                    
                 });
             
                 return redirect('/home/message/youxiang');
@@ -101,7 +96,9 @@ class MessageController extends Controller
         $data = Message::where('mid',$id)->update($res);
 
         if($data){
-            return redirect('/home/login');
+
+            return redirect('/');
+
         }
     }
 

@@ -25,6 +25,7 @@
 							@foreach($rs as $k=>$v)
 							<tr class='cart_item' id='{{$v->id}}'>
 								<th scope="row">
+
 									<label class="checked-label"><input type="checkbox" class='ches' gid='{{$v->gid}}'><i></i>
 
 										<div class="img"><img src="{{$v->gimg}}" alt="" class="cover"></div>
