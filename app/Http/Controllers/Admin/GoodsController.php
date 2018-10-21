@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Admin\Goods;
+
 use App\Model\Admin\Goodsimg;
+
 use App\Model\Admin\Cate;
 use DB;
 class GoodsController extends Controller
@@ -18,7 +20,7 @@ class GoodsController extends Controller
     public function index(Request $request)
     {
          //获取商品图片
-         /*$res=DB::table('goodspicture')->first();*/
+
         //多条件查询
         $rs = Goods::orderBy('id','asc')
         ->where(function($query) use($request){
@@ -33,6 +35,7 @@ class GoodsController extends Controller
             //如果权限不为空
             //?单纯的搜索权限 怎么解决?
             if(!empty($addtime)) {
+
                 $query->where('addtime','like','%'.$addtime.'%');                        
             }
 
@@ -41,6 +44,7 @@ class GoodsController extends Controller
             
         return view('admin.goods.index',[
             'title'=>'商品列表页',
+
             'rs'   =>$rs,
             'request'=>$request,
         ]);
@@ -86,6 +90,7 @@ class GoodsController extends Controller
              'stock.regex'=>'库存格式不正确'
         ]);*/
        //获取提交过来的数据
+
         $rs = $request->except('_token','gpic','picture');
        
         //处理商品主图
@@ -99,6 +104,7 @@ class GoodsController extends Controller
         }
         $rs['picture'] = 'uploads/goods/master/'.$name.'.'.$suf;
         $data = Goods::create($rs);
+
         $id = $data->id;
         $gd = $data::find($id);
         //处理图片
@@ -113,6 +119,7 @@ class GoodsController extends Controller
                 //获取文件后缀
                 $suffix = $v->getClientOriginalExtension();
                 //将文件拼接后移入到upload/goods文件夹下  
+
                $v->move('uploads/goods/',$gname.'.'.$suffix);
 
                 $info['gpic'] = 'uploads/goods/'.$gname.'.'.$suffix;
@@ -123,6 +130,7 @@ class GoodsController extends Controller
        
         try{
             
+
             $cds = $gd->gimgs()->createMany($gm);
             if($cds){
                 return redirect('/admin/goods')->with('success','添加成功');
@@ -140,6 +148,7 @@ class GoodsController extends Controller
      */
     public function show($id)
     {
+
         //根据id获取存储图片的路经信息
 
         //删除数据表里面的图片信息   还删除uploads信息吗??
@@ -179,6 +188,7 @@ class GoodsController extends Controller
         }
 
         echo 1;
+
     }
 
     /**
@@ -189,6 +199,7 @@ class GoodsController extends Controller
      */
     public function edit($id)
     {
+
         $rs = Cate::select(DB::raw('*,concat(path,tid) as paths'))->
         orderBy('paths')->get();
 
@@ -214,6 +225,7 @@ class GoodsController extends Controller
             'res'=>$res,
             'gimg'=>$gimg
         ]);
+
     }
 
     /**
@@ -225,6 +237,7 @@ class GoodsController extends Controller
      */
     public function update(Request $request, $id)
     {
+
         
         //1.表单验证
         $this->validate($request, [
@@ -298,6 +311,7 @@ class GoodsController extends Controller
             return back()->with('error','修改失败'); 
 
         }
+
     }
 
     /**
@@ -308,6 +322,7 @@ class GoodsController extends Controller
      */
     public function destroy($id)
     {
+
         //根据id获取图片的路径 unlink
         $res = Goodsimg::where('gid',$id)->get();
 
@@ -346,5 +361,6 @@ class GoodsController extends Controller
         }catch(\Exception $e){
             return back()->with('error','删除失败');
         }
+
     }
 }

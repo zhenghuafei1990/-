@@ -15,7 +15,9 @@
 	                        <div class="title">
 	                            <i class="iconfont icon-skirt ce"></i>{{$v->tname}}
 
+
 	                        </div>	
+
 
 	                        <ul class="cat-list clearfix">
 	                            @foreach($v->sub as $kk=>$vv)
@@ -24,6 +26,7 @@
 	                        </ul>
 	                        <div class="cat-list__deploy">
 	                            <div class="deploy-box">
+
 
 	                                 <div class="genre-box clearfix">
 	                                 	@foreach($v->sub as $kk=>$vv)
@@ -35,6 +38,7 @@
 										</div>
 										@endforeach
 									</div>                            
+
 
 	                            </div>           
 	                        </div>
@@ -154,70 +158,28 @@
 				</div>
 				<div class="con-box">
 					<a class="left-img hot-img" href="">
-						<img src="/home/images/floor_1.jpg" alt="" class="cover">
+						<img src="/uploads/goods/2.jpg" alt="" class="cover">
 					</a>
+				
 					<div class="right-box hot-box">
-						<a href="item_show.html" class="floor-item">
+						@foreach($ecommend as $k=>$v)
+						<a href="/home/ecommend/{{$v->id}}" class="floor-item">
 							<div class="item-img hot-img">
-								<img src="/home/images/temp/S-001.jpg" alt="纯色圆领短袖T恤活a动衫弹" class="cover">
+								<img src="{{$v->picture}}" alt="纯色圆领短袖T恤活a动衫弹" class="cover">
 							</div>
+					
+						
 							<div class="price clearfix">
-								<span class="pull-left cr fz16">￥18.0</span>
-								<span class="pull-right c6">进货价</span>
+								<span class="pull-left cr fz16">￥{{$v->price}}</span>
+								
 							</div>
-							<div class="name ep" title="纯色圆领短袖T恤活a动衫弹力柔软">纯色圆领短袖T恤活a动衫弹力柔软</div>
+							<div class="name ep" title="{{$v->gname}}">{{$v->gname}}</div>
+						
 						</a>
-						<a href="item_show.html" class="floor-item">
-							<div class="item-img hot-img">
-								<img src="/home/images/temp/S-002.jpg" alt="纯色圆领短袖T恤活a动衫弹" class="cover">
-							</div>
-							<div class="price clearfix">
-								<span class="pull-left cr fz16">￥18.0</span>
-								<span class="pull-right c6">进货价</span>
-							</div>
-							<div class="name ep" title="纯色圆领短袖T恤活a动衫弹力柔软">纯色圆领短袖T恤活a动衫弹力柔软</div>
-						</a>
-						<a href="item_show.html" class="floor-item">
-							<div class="item-img hot-img">
-								<img src="/home/images/temp/S-003.jpg" alt="纯色圆领短袖T恤活a动衫弹" class="cover">
-							</div>
-							<div class="price clearfix">
-								<span class="pull-left cr fz16">￥18.0</span>
-								<span class="pull-right c6">进货价</span>
-							</div>
-							<div class="name ep" title="纯色圆领短袖T恤活a动衫弹力柔软">纯色圆领短袖T恤活a动衫弹力柔软</div>
-						</a>
-						<a href="item_show.html" class="floor-item">
-							<div class="item-img hot-img">
-								<img src="/home/images/temp/S-004.jpg" alt="纯色圆领短袖T恤活a动衫弹" class="cover">
-							</div>
-							<div class="price clearfix">
-								<span class="pull-left cr fz16">￥18.0</span>
-								<span class="pull-right c6">进货价</span>
-							</div>
-							<div class="name ep" title="纯色圆领短袖T恤活a动衫弹力柔软">纯色圆领短袖T恤活a动衫弹力柔软</div>
-						</a>
-						<a href="item_show.html" class="floor-item">
-							<div class="item-img hot-img">
-								<img src="/home/images/temp/S-005.jpg" alt="纯色圆领短袖T恤活a动衫弹" class="cover">
-							</div>
-							<div class="price clearfix">
-								<span class="pull-left cr fz16">￥18.0</span>
-								<span class="pull-right c6">进货价</span>
-							</div>
-							<div class="name ep" title="纯色圆领短袖T恤活a动衫弹力柔软">纯色圆领短袖T恤活a动衫弹力柔软</div>
-						</a>
-						<a href="item_show.html" class="floor-item">
-							<div class="item-img hot-img">
-								<img src="/home/images/temp/S-006.jpg" alt="纯色圆领短袖T恤活a动衫弹" class="cover">
-							</div>
-							<div class="price clearfix">
-								<span class="pull-left cr fz16">￥18.0</span>
-								<span class="pull-right c6">进货价</span>
-							</div>
-							<div class="name ep" title="纯色圆领短袖T恤活a动衫弹力柔软">纯色圆领短袖T恤活a动衫弹力柔软</div>
-						</a>
+						@endforeach
 					</div>
+				
+
 				</div>
 			</div>
 			<div class="pull-right">
@@ -255,7 +217,9 @@
 							</a>
 						</div>
 						<div class="but-div">
-							<a href="item_sale_page.html">
+
+							<a href="home/selling">
+
 								<i class="but-icon"></i>
 								<p>热卖专区</p>
 							</a>

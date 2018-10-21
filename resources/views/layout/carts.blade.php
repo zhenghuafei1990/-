@@ -111,6 +111,20 @@
 			</div>
 		</div>
 		<div class="footer-links inner">
+\
+
+			@php
+				$res = DB::table('friend')->get();
+			@endphp
+
+			<dl>
+                <dt>友情链接</dt>
+              @foreach($res as $k => $v)
+                <a href="{{$v->url}}"><dd>{{$v->fname}}</dd></a>
+               @endforeach
+            </dl>
+
+\
 			<dl>
 				<dt>U袋网</dt>
 				<a href="temp_article/udai_article10.html"><dd>企业简介</dd></a>

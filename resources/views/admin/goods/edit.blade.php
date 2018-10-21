@@ -1,3 +1,4 @@
+
 @extends('layout.admins')
 
 @section('title', $title)
@@ -165,4 +166,5 @@
 </script>
 
 @stop
+
 

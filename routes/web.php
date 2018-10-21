@@ -36,6 +36,19 @@ Route::group(['middleware'=>'adminlogin'],function(){
 	//后台的用户模块
 	Route::resource('admin/user','Admin\UserController');
 
+
+	//修改头像
+	Route::any('admin/profile','Admin\LoginController@profile');
+	Route::any('admin/doprofile','Admin\LoginController@doprofile');
+
+	//修改密码
+	Route::any('admin/pass','Admin\LoginController@pass');
+	Route::any('admin/dopass','Admin\LoginController@dopass');
+
+	//退出后台
+	Route::any('admin/logout','Admin\LoginController@logout');
+
+
 	//后台的分类模块
 	Route::resource('/admin/cate','Admin\CateController');
 
@@ -57,16 +70,26 @@ Route::group(['middleware'=>'adminlogin'],function(){
 	//友情链接
 	Route::resource('admin/friend', 'Admin\FriendController');
 
+
+	//商品推荐
+	Route::resource('admin/ecommend', 'Admin\EcommendController');
+
+	//热卖商品
+	Route::resource('admin/selling', 'Admin\SellingController');
+
 	//后台的商品模块
 	Route::resource('/admin/goods','Admin\GoodsController');
 
+
 	//后台商品主图删除
 	Route::any('/admin/goods/picture/{id}','Admin\GoodsController@picture');
+
 
 	//后台订单管理
 	Route::resource('admin/orders','Admin\OrdersController');
 	//后台发货
 	Route::any('/admin/orders/send/{id}','Admin\OrdersController@send');
+
 
 	//后台查看评论
 	Route::any('/admin/comment/index','Admin\CommentController@index');
@@ -74,6 +97,7 @@ Route::group(['middleware'=>'adminlogin'],function(){
 	Route::any('/admin/retreat/index','Admin\RetreatController@index');
 	//后台退货
 	Route::any('/admin/retreat/send/{id}','Admin\RetreatController@send');
+
 
 
 
@@ -136,6 +160,13 @@ Route::group([],function(){
 	Route::any('/home/order/finish/{id}','Home\OrdersController@finish');
 	//无效订单
 	Route::any('/home/order/invalid/{id}','Home\OrdersController@invalid');
+
+	//推荐商品
+	Route::any('/home/ecommend/{id}','Home\EcommendController@ecommend');
+
+	//热卖商品
+	Route::any('/home/selling','Home\SellingController@selling');
+
 	//评论管理
 
 	Route::any('/home/comment/comments/{id}','Home\CommentController@comments');

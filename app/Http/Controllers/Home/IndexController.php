@@ -17,16 +17,25 @@ class IndexController extends Controller
 
         $cates = Cate::getCatesubs();
 
-        // dump($cates);die;
-
     	$poster = Poster::get();
 
-    	$rs = DB::table('lunbo')->get();
+        $ecommend = DB::table('goods')->get();
+
+        $selling = DB::table('goods')->get();
+       
+        
+        $rs = DB::table('lunbo')->orderBy('lid','desc')->take(6)->get();
+    	// $rs = DB::table('lunbo')->get();
+
     	return view('home.index',[
     		'title'=>'万购购物商城',
     		'poster'=>$poster,
     		'rs'=>$rs,
-            'cates'=>$cates
+            'cates'=>$cates,
+            'ecommend'=>$ecommend,
+            'selling'=>$selling
+            
+
     	]);
 
     }

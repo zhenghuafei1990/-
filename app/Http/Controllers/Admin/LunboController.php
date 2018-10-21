@@ -144,7 +144,10 @@ class LunboController extends Controller
             $suffix = $request->file('url')->getClientOriginalExtension(); 
 
             //移动
-            $request->file('url')->move('uploads',$name.'.'.$suffix);
+
+            $request->file('url')->move('uploads/lunbo',$name.'.'.$suffix);
+            $res['url'] = '/uploads/lunbo/'.$name.'.'.$suffix;
+
 
 
         }

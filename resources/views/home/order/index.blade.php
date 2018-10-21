@@ -24,6 +24,7 @@
 
                                     订单信息
 
+
                                 </th>
                                 <th width="85">
                                     总价
@@ -41,6 +42,7 @@
                                     交易操作
                                 </th>
                             </tr>
+
 
                             @foreach($order as $k=>$v)
                             <tr class="order-item">
@@ -60,11 +62,13 @@
                                             <div class="format">
                                                 收货电话:{{$v->phone}}
 
+
                                             </div>
                                         </div>
                                     </label>
                                 </td>
                                 <td>
+
 
                                     ￥{{$v->total}}
                                 </td>
@@ -74,12 +78,14 @@
                                 <td>
                                     ￥{{$v->total}}
 
+
                                     <br>
                                     <span class="fz12 c6 text-nowrap">
                                         (含运费: ¥0.00)
                                     </span>
                                 </td>
                                 <td class="state">
+
                                 	@if($v->status == 0)新订单
                                 	@elseif($v->status == 1)已发货<br><a href="/home/order/finish/{{$v->oid}}">确认收货</a>
                                 	@elseif($v->status == 2)完成订单
@@ -93,11 +99,13 @@
                                     @if($v->status !=2)
                                     <a href="/home/order/invalid/{{$v->oid}}" class="but c6">
 
+
                                         取消订单
                                     </a>
                                     @endif
                                 </td>
                             </tr>
+
 
                             @endforeach
                         </table>
@@ -123,6 +131,7 @@
                         </style>
                         <div class="dataTables_paginate paging_full_numbers" id='fenye' style="margin-top: 40px;float:right">
                             {{$order->links()}}
+
 
                         </div>
                     </div>

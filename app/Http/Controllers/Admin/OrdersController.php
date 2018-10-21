@@ -16,6 +16,7 @@ class OrdersController extends Controller
     //后台发货
     public function send($oid)
     {
+
         Orders::where('oid',$oid)->update([ 'status' => 1 ]);
 
         return back();
@@ -36,7 +37,9 @@ class OrdersController extends Controller
         //单条件查询
         $uname = $request->input('oname');
         //获取数据
+
         $rs = Orders::where('oname','like','%'.$uname.'%')->orderBy('id','desc')
+
         ->paginate($request->input('num',5));
 
 

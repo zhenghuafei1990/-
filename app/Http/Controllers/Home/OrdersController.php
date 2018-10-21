@@ -8,7 +8,9 @@ use App\Http\Controllers\Controller;
 use App\Model\Admin\Orders;
 use App\Model\Admin\Details;
 use App\Model\Home\Cart;
+
 use App\Model\Home\Comment;
+
 use DB;
 
 class OrdersController extends Controller
@@ -132,6 +134,7 @@ class OrdersController extends Controller
         $data = [
             'addtime' => date('Y-m-d H:i:s'),
             'oid'=> $this->oid,
+
             'uid'=>$this->getUid(),
             'oname'=> $request->input('oname'),
             'address'=> $request->input('address'),
@@ -171,9 +174,11 @@ class OrdersController extends Controller
     //无效订单
     public function invalid($oid)
     {
+
      Orders::where('oid',$oid)->update([ 'status' => 3 ]);
 
       return back();
+
     }
 
 
@@ -184,6 +189,7 @@ class OrdersController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index(Request $request)
     {
       $uid = session('mid');
@@ -195,6 +201,7 @@ class OrdersController extends Controller
           'title'=>'我的订单',
           'order'=>$order
       ]);
+
     }
 
     /**
@@ -230,10 +237,14 @@ class OrdersController extends Controller
         $order = Orders::where('oid',$oid)->get();
 
 
+
+
         return view('/home/order/detail',[
             'title'=>'订单详情页',
             'detail'=>$detail,
+
             'order'=>$order,
+
         ]);
     }
 

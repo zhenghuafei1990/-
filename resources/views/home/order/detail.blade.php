@@ -1,8 +1,11 @@
+
 @extends('layout.usershome')
+
 
 @section('title',$title)
 
 @section('content')
+
 <div class="user-content__box clearfix bgf">
     <div class="title">
         订单中心-订单详情页
@@ -97,6 +100,7 @@
             </div>
         </div>
         @endforeach
+
 
     </div>
 </div>

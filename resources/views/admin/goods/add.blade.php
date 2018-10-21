@@ -56,6 +56,7 @@
     					<input class="small" type="text" name="stock">
     				</div>
     			</div>
+
                 <div class="mws-form-row">
                     <label class="mws-form-label">添加时间</label>
                     <div class="mws-form-item">
@@ -70,6 +71,7 @@
                             </div>
                         </div>
                 </div>
+
     			<div class="mws-form-row">
                     	<label class="mws-form-label">商品图片</label>
                     	<div class="mws-form-item">
@@ -78,6 +80,8 @@
                         	</div>
                         </div>
                 </div> 
+
+
     			 <div class="mws-form-row">
     				<label class="mws-form-label">商品详情</label>
     				<div class="mws-form-item">   				

@@ -4,7 +4,7 @@
 
 @section('content')
     
-
+    
 
 <div class="mws-panel grid_8">
     <div class="mws-panel-header">
@@ -17,7 +17,7 @@
     <div class="mws-panel-body no-padding">
         <div role="grid" class="dataTables_wrapper" id="DataTables_Table_1_wrapper">
 
-            <form action="/admin/lunbo" method='get'>
+            <form action="/admin/ecommend" method='get'>
             <div id="DataTables_Table_1_length" class="dataTables_length">
                 <label>
                     显示
@@ -29,7 +29,7 @@
                            @if($request->num == 5)selected="selected" @endif>10
                         </option>
                         <option value="15" 
-                           @if($request->num == 5)selected="selected" @endif>15s
+                           @if($request->num == 5)selected="selected" @endif>15
                         </option>
                        
                     </select>
@@ -40,7 +40,7 @@
                 <label>
                    
                     名称搜索:
-                    <input type="text" name='lunname' value="{{$request->lunname}}" aria-controls="DataTables_Table_1">
+                    <input type="text" name='gname' value='{{$request->gname}}'>
                 </label>
 
                 <button class='btn btn-info'>搜索</button>
@@ -60,16 +60,40 @@
 
                          <th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
                         rowspan="1" colspan="1" style="width: 30px;" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">
-                            名称
+                            图片
                         </th>
 
-                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
-                        rowspan="1" colspan="1" style="width: 30px;"  aria-label="Engine version: activate to sort column ascending">
-                            轮播
+                         <th class="sorting_asc" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
+                        rowspan="1" colspan="1" style="width: 30px;" aria-sort="ascending" aria-label="Rendering engine: activate to sort column descending">
+                            商品名称
                         </th>
                        
 
                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
+                        rowspan="1" colspan="1" style="width: 40px;" aria-label="CSS grade: activate to sort column ascending">
+                            单价
+                        </th>
+
+                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
+                        rowspan="1" colspan="1" style="width: 40px;" aria-label="CSS grade: activate to sort column ascending">
+                            状态
+                        </th>
+
+                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
+                        rowspan="1" colspan="1" style="width: 40px;" aria-label="CSS grade: activate to sort column ascending">
+                            库存量
+                        </th>
+
+                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
+                        rowspan="1" colspan="1" style="width: 20px;" aria-label="CSS grade: activate to sort column ascending">
+                            销量
+                        </th>
+
+                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
+                        rowspan="1" colspan="1" style="width: 40px;" aria-label="CSS grade: activate to sort column ascending">
+                            添加时间
+                        </th>
+                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
                         rowspan="1" colspan="1" style="width: 40px;" aria-label="CSS grade: activate to sort column ascending">
                             操作
                         </th>
@@ -77,25 +101,53 @@
                 </thead>
                 <tbody role="alert" aria-live="polite" aria-relevant="all">
                     
-                @foreach($rs as $k => $v)
+             @foreach( $fenye as $k => $v)
                     <tr class="">
                         <td class="">
-                            {{$v->lid}}
+                            {{$v->id}}
                         </td>
-
+                        
                         <td class="">
-                            {{$v->lunname}}
+                           
+                           <img src="{{$v->picture}}">
+                           
                         </td>
                         
                         <td class=" ">
+                          {{$v->gname}}
+                       
+                        </td>
+
+                        <td class=" ">
+                            {{$v->price}}
+                        </td>
+
+                        <td class=" ">
+                            {{--$v->status ? '启用' : '禁用'--}}
                            
-                            <img src="{{$v->url}}" alt="" width="300px">
+                            @if($v->status == 1)
+                                上架
+                            @else
+                                下架
+                            @endif
                         </td>
                         
-                         <td class=" "  style="text-align: center">
-                            <a class='btn btn-primary' href="/admin/lunbo/{{$v->lid}}/edit">修改</a>
+                        <td class=" "> 
+                            {{$v->stock}}
+                        </td>
 
-                            <form action="/admin/lunbo/{{$v->lid}}" method='post' style='display:inline'>
+                        <td class=" "> 
+                            {{$v->num}}
+                        </td>
+
+                        <td class="">
+                          {{$v->addtime}}
+                        </td>
+
+                        <td class=" "> 
+                            <a class='btn btn-primary' href="/admin/ecommend/{{$v->id}}/edit">修改</a>
+
+                            <form action="/admin/ecommend/{{$v->id}}" method='post' style='display:inline'>
                                 
                                 {{csrf_field()}}
                                 {{method_field('DELETE')}}
@@ -103,8 +155,8 @@
                                 <button class='btn btn-danger'>删除</button>
 
                             </form>
-
                         </td>
+                        
                     </tr>
                 @endforeach
 
@@ -161,7 +213,8 @@
             
 
             <div class="dataTables_paginate paging_full_numbers" id="DataTables_Table_1_paginate">
-            {{$rs->appends($request->all())->links()}}
+           {{$fenye->appends($request->all())->links()}}
+
               
             </div>
         </div>

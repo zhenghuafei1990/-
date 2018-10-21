@@ -32,7 +32,11 @@
                     付款金额 : &nbsp;
                     <em style='color:red'>
 
+                        ¥{{session('countMoney')}}
+
+
                         ¥{{$rs->total}}
+
 
                     </em>
                 </li>
@@ -63,7 +67,9 @@
                 </span>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;查看
 
+
                 <a href="/home/orders">
+
 
                     <span style='font-size:18px;color:red'>
                         已买到的宝贝

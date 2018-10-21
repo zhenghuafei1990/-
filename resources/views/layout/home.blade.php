@@ -37,6 +37,7 @@
 		</div>
 	</div>
 
+
 	<!-- 搜索栏 -->
 	<div class="top-search">
 		<div class="inner">
@@ -61,7 +62,6 @@
 	</div>
 @section('content')
 
-
 @show
 
 	<!-- 底部信息 -->
@@ -83,6 +83,19 @@
 			</div>
 		</div>
 		<div class="footer-links inner">
+
+
+			@php
+				$res = DB::table('friend')->get();
+			@endphp
+
+			<dl>
+                <dt>友情链接</dt>
+              @foreach($res as $k => $v)
+                <a href="{{$v->url}}"><dd>{{$v->fname}}</dd></a>
+               @endforeach
+            </dl>
+
 			
 			<dl>
 				<dt>服务中心</dt>
