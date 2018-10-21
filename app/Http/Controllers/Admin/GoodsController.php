@@ -5,7 +5,6 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\Model\Admin\Goods;
-
 use App\Model\Admin\Goodsimg;
 
 use App\Model\Admin\Cate;
@@ -35,7 +34,6 @@ class GoodsController extends Controller
             //如果权限不为空
             //?单纯的搜索权限 怎么解决?
             if(!empty($addtime)) {
-
                 $query->where('addtime','like','%'.$addtime.'%');                        
             }
 
@@ -44,7 +42,6 @@ class GoodsController extends Controller
             
         return view('admin.goods.index',[
             'title'=>'商品列表页',
-
             'rs'   =>$rs,
             'request'=>$request,
         ]);
@@ -90,7 +87,6 @@ class GoodsController extends Controller
              'stock.regex'=>'库存格式不正确'
         ]);*/
        //获取提交过来的数据
-
         $rs = $request->except('_token','gpic','picture');
        
         //处理商品主图
@@ -103,6 +99,7 @@ class GoodsController extends Controller
                  $request->file('picture')->move('uploads/goods/master/',$name.'.'.$suf);
         }
         $rs['picture'] = 'uploads/goods/master/'.$name.'.'.$suf;
+
         $data = Goods::create($rs);
 
         $id = $data->id;
@@ -119,7 +116,6 @@ class GoodsController extends Controller
                 //获取文件后缀
                 $suffix = $v->getClientOriginalExtension();
                 //将文件拼接后移入到upload/goods文件夹下  
-
                $v->move('uploads/goods/',$gname.'.'.$suffix);
 
                 $info['gpic'] = 'uploads/goods/'.$gname.'.'.$suffix;
@@ -130,7 +126,6 @@ class GoodsController extends Controller
        
         try{
             
-
             $cds = $gd->gimgs()->createMany($gm);
             if($cds){
                 return redirect('/admin/goods')->with('success','添加成功');
@@ -237,8 +232,6 @@ class GoodsController extends Controller
      */
     public function update(Request $request, $id)
     {
-
-        
         //1.表单验证
         $this->validate($request, [
              'gname' => 'required|regex:/[\x{4e00}-\x{9fa5}]+/u',
@@ -361,6 +354,7 @@ class GoodsController extends Controller
         }catch(\Exception $e){
             return back()->with('error','删除失败');
         }
+
 
     }
 }

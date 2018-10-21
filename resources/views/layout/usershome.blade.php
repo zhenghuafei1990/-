@@ -15,12 +15,8 @@
 	<script src="/home/js/global.js" charset="UTF-8"></script>
 	<script src="/home/js/jquery.DJMask.2.1.1.js" charset="UTF-8"></script>
 
-
-
 	<script src="/home/js/jquery.3.2.1.min.js" charset="UTF-8"></script>
 
-
-	
 	<title>@yield('title')</title>
 </head>
 <body>
@@ -36,7 +32,6 @@
 				@if(session('mname'))<span class="cr">{{session('mname')}}</span> @else <a href="/home/login"><span class="cr">登录</span></a>@endif
 				<a href="/home/message">注册</a>
 				<a href="/home/usershome">我的万购</a>
-				<a href="udai_order.html">我的订单</a>
 				<a href="/home/empty">退出当前账户</a>
 			</div>
 		</div>
@@ -64,11 +59,9 @@
 			</dl>
 			<dl class="user-center__nav">
 				<dt>订单中心</dt>
-
 				<a href="/home/orders"><dd>我的订单</dd></a>
 				<a href="udai_collection.html"><dd>我的收藏</dd></a>
 				<a href="/home/retreat/index"><dd>退款/退货</dd></a>
-
 			</dl>
 			<dl class="user-center__nav">
 				<dt>新手上路</dt>
@@ -78,9 +71,9 @@
 				<a href="temp_article/udai_article8.html"><dd>付款账户</dd></a>
 			</dl>
 			<dl class="user-center__nav">
-				<dt>U袋网</dt>
+				<dt>万购网</dt>
 				<a href="temp_article/udai_article10.html"><dd>企业简介</dd></a>
-				<a href="temp_article/udai_article11.html"><dd>加入U袋</dd></a>
+				<a href="temp_article/udai_article11.html"><dd>加入万购</dd></a>
 				<a href="temp_article/udai_article12.html"><dd>隐私说明</dd></a>
 			</dl>
 		</div>
@@ -120,6 +113,7 @@
 				</div>
 			</div>
 		</div>
+
 		<div class="footer-links inner">
 
 			@php
@@ -138,6 +132,7 @@
 				<a href="temp_article/udai_article10.html"><dd>企业简介</dd></a>
 				<a href="temp_article/udai_article11.html"><dd>加入U袋</dd></a>
 				<a href="temp_article/udai_article12.html"><dd>隐私说明</dd></a>
+
 			</dl>
 			<dl>
 				<dt>服务中心</dt>
@@ -157,7 +152,7 @@
 		<div class="copy-box clearfix">
 			<ul class="copy-links">
 				<a href="agent_level.html"><li>网店代销</li></a>
-				<a href="class_room.html"><li>U袋学堂</li></a>
+				<a href="class_room.html"><li>万购学堂</li></a>
 				<a href="udai_about.html"><li>联系我们</li></a>
 				<a href="temp_article/udai_article10.html"><li>企业简介</li></a>
 				<a href="temp_article/udai_article5.html"><li>新手上路</li></a>

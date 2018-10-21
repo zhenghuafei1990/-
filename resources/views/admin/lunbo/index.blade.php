@@ -5,7 +5,6 @@
 @section('content')
     
 
-
 <div class="mws-panel grid_8">
     <div class="mws-panel-header">
         <span>
