@@ -29,8 +29,6 @@
                 <li style='font-size:30px'>
                     付款金额 : &nbsp;
                     <em style='color:red'>
-                        ¥{{session('countMoney')}}
-
 
                         ¥{{$rs->total}}
 
