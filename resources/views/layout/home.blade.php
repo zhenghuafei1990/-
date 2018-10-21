@@ -14,7 +14,6 @@
 	<script src="/home/js/swiper.min.js" charset="UTF-8"></script>
 	<script src="/home/js/global.js" charset="UTF-8"></script>
 	<script src="/home/js/jquery.DJMask.2.1.1.js" charset="UTF-8"></script>
-
 	<script src="/home/js/jquery.3.2.1.min.js" charset="UTF-8"></script>
 	
 	<title>@yield('title')</title>
