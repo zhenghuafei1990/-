@@ -10,7 +10,7 @@ class SellingController extends Controller
 {
     public function selling()
     {
-    	$selling = DB::table('goods')->get();
+    	$selling = DB::table('goods')->orderBy('stock','asc')->take(20)->get();
     	$stock = DB::table('goods')->orderBy('stock','asc')->take(10)->get();
 	    return view('home.selling.index',[
 	        	'title'=>'热卖专区',

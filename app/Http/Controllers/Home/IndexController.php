@@ -16,6 +16,7 @@ class IndexController extends Controller
     {
 
         $cates = Cate::getCatesubs();
+        //dd($cates);
 
     	$poster = Poster::get();
 
@@ -26,7 +27,6 @@ class IndexController extends Controller
         $rs = DB::table('lunbo')->orderBy('lid','desc')->take(6)->get();
     	// $rs = DB::table('lunbo')->get();
 
-
     	return view('home.index',[
     		'title'=>'万购购物商城',
     		'poster'=>$poster,
@@ -34,7 +34,6 @@ class IndexController extends Controller
             'cates'=>$cates,
             'ecommend'=>$ecommend,
             'selling'=>$selling
-
     	]);
 
     }
