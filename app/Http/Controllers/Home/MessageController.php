@@ -23,14 +23,13 @@ class MessageController extends Controller
     {
     	//表单验证
         $this->validate($request,[
-            'mname' => 'required|regex:/^\w{4,16}$/',
-            'password' => 'required|regex:/^\S{4,12}$/',
-            'repassword' =>'same:password',
-            'phone' =>'regex:/^1[3456789]\d{9}$/',
-            'email' =>'email:email',
+            'mname'=>'unique:message,mname|regex:/^\w{4,16}$/',
+            'password'=>'regex:/^\S{4,12}$/',
+            'repassword'=>'same:password',
+            'phone'=>'regex:/^1[3456789]\d{9}$/',
+            'email'=>'email:email',
         ],[
-            'mname.required' =>'用户名不能为空!',
-            'password.required' =>'用户名不能为空',
+            'mname.unique'=>'用户名已被占用',
             'mname.regex'=>'用户名格式不正确',
             'password.regex'=>'密码格式不正确',
             'repassword.same'=>'两次密码不一致',
@@ -39,7 +38,7 @@ class MessageController extends Controller
         ]);
 
 		$res = $request->except('_token','repassword');
-
+        
 		$res['password'] = Hash::make($res['password']);
 
         $res['status'] = '0';

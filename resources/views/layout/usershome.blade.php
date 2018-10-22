@@ -60,22 +60,10 @@
 			<dl class="user-center__nav">
 				<dt>订单中心</dt>
 				<a href="/home/orders"><dd>我的订单</dd></a>
-				<a href="udai_collection.html"><dd>我的收藏</dd></a>
 				<a href="/home/retreat/index"><dd>退款/退货</dd></a>
 			</dl>
-			<dl class="user-center__nav">
-				<dt>新手上路</dt>
-				<a href="temp_article/udai_article5.html"><dd>如何成为代理商</dd></a>
-				<a href="temp_article/udai_article6.html"><dd>代销商上架教程</dd></a>
-				<a href="temp_article/udai_article7.html"><dd>分销商常见问题</dd></a>
-				<a href="temp_article/udai_article8.html"><dd>付款账户</dd></a>
-			</dl>
-			<dl class="user-center__nav">
-				<dt>万购网</dt>
-				<a href="temp_article/udai_article10.html"><dd>企业简介</dd></a>
-				<a href="temp_article/udai_article11.html"><dd>加入万购</dd></a>
-				<a href="temp_article/udai_article12.html"><dd>隐私说明</dd></a>
-			</dl>
+			
+			
 		</div>
 
 		
