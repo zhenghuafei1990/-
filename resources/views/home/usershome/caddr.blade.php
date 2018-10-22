@@ -74,7 +74,7 @@
 		<div class="form-group">
 			<div class="col-sm-offset-2 col-sm-6">
 				<div class="checkbox">
-					<label><input id="che" type="checkbox" checked="checked"><i></i> 设为默认收货地址</label>
+					<label><input id="che" type="checkbox"><i></i> 设为默认收货地址</label>
 				</div>
 			</div>
 		</div>

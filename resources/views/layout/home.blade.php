@@ -38,7 +38,7 @@
 	<!-- 搜索栏 -->
 	<div class="top-search">
 		<div class="inner">
-			<a class="logo" href="/"><img src="logo/logo.png" alt="万购网" class="cover"></a>
+			<a class="logo" href="/"><img src="/logo/logo.png" alt="万购网" class="cover"></a>
 			<div class="search-box">
 				<form class="input-group">
 					<input placeholder="Ta们都在搜万购网" type="text">
@@ -51,8 +51,8 @@
 
 			</div>
 			<div class="cart-box">
-				<a href="udai_shopcart.html" class="cart-but">
-					<i class="iconfont icon-shopcart cr fz16"></i> 购物车 0 件
+				<a href="/home/cart" class="cart-but">
+					<i class="iconfont icon-shopcart cr fz16"></i> 购物车
 				</a>
 			</div>
 		</div>
