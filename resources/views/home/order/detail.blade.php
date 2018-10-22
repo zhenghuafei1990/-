@@ -1,6 +1,4 @@
-
 @extends('layout.usershome')
-
 
 @section('title',$title)
 
@@ -102,12 +100,12 @@
         @endforeach
 
 
+
     </div>
 </div>
 @stop
 
 
 @section('js')
-
 
 @stop

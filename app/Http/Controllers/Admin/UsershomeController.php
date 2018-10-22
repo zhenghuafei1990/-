@@ -25,7 +25,7 @@ class UsershomeController extends Controller
                     $query->where('cname','like','%'.$cname.'%');
                 }
             })
-            ->paginate($request->num);
+            ->paginate($request->input('num','3'));
 
         return view('admin.usershome.index',[
             'title'=>'收货人浏览',

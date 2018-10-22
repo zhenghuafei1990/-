@@ -1,12 +1,8 @@
-
 @extends('layout.usershome')
-
-
 
 @section('title',$title)
 
 @section('content')
-
 <div class="user-content__box clearfix bgf">
     <div class="title">
         订单中心-商品评价
@@ -40,12 +36,11 @@
                         <span class="c6 fz20">
                             {{$v->count}}
 
+
                         </span>
                     </div>
                     <div class="param-row">
                         <span class="param-label">
-
-
                             类型
                         </span>
                         <span class="c6 fz20">
@@ -113,16 +108,19 @@
             </div>  
         </form>
 
+
     </div>
 </div>
 @stop
 
 
 @section('js')
+
 <script type="text/javascript">
     $('.but').click(function(){
         alert('评论成功,谢谢评论!!!');
     })
 </script>
+
 
 @stop

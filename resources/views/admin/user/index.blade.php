@@ -129,10 +129,7 @@
 					    -moz-box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.5), inset 0px 1px 0px rgba(255, 255, 255, 0.15);
 					    box-shadow: 0px 1px 0px rgba(0, 0, 0, 0.5), inset 0px 1px 0px rgba(255, 255, 255, 0.15);
             		}
-
-
             		.pagination .active {
-
             			    background-color: #c5d52b;
             			    color: #323232;
     						border: none;

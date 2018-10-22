@@ -5,9 +5,7 @@
  	<title>Document</title>
  </head>
  <body>
-
  	<p>尊敬的{{$res['mname']}}:</p>
-
 	
 	<p>
        您好，感谢您注册 wgshop 。</p>

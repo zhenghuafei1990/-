@@ -25,7 +25,7 @@ class MessageController extends Controller
                     $query->where('mname','like','%'.$mname.'%');
                 }
             })
-            ->paginate($request->num);
+            ->paginate($request->input('num','10'));
 
 
         return view('admin.message.index',[
@@ -128,7 +128,7 @@ class MessageController extends Controller
             if($rs){
                 return redirect('/admin/message')->with('success','修改成功');
             }else{
-                return redirect('/admin/message')->with('success','修改成功');
+                return redirect('/admin/message')->with('success','未进行修改');
             }
         }catch(\Exception $e){
             return redirect('/admin/message')->with('error','修改失败');

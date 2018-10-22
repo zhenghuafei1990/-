@@ -5,9 +5,9 @@ namespace App\Http\Controllers\Admin;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
-use App\Model\Admin\Poster;
+use App\Model\Admin\Video;
 
-class PosterController extends Controller
+class VideoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,22 +17,21 @@ class PosterController extends Controller
     public function index(Request $request)
     {
 
-        $rs = Poster::orderBy('posterid','asc')
+        $video = Video::orderBy('id','asc')
             ->where(function($query) use($request){
                 //检测关键字
-                $postername = $request->input('postername');
+                $vname = $request->input('vname');
                 //如果用户名不为空
-                if(!empty($postername)) {
-                    $query->where('postername','like','%'.$postername.'%');
+                if(!empty($vname)) {
+                    $query->where('vname','like','%'.$vname.'%');
                 }
             })
             ->paginate($request->input('num','3'));
 
-        return view('admin.poster.index',[
-            'title'=>'广告浏览管理',
-            'rs'=>$rs,
+        return view('admin.video.index',[
+            'title'=>'视频的管理页面',
+            'video'=>$video,
             'request'=>$request
-
         ]);
     }
 
@@ -43,7 +42,7 @@ class PosterController extends Controller
      */
     public function create()
     {
-        return view('admin.poster.add',['title'=>'广告添加管理']);
+        return view('admin.video.add',['title'=>'视频添加']);
     }
 
     /**
@@ -54,12 +53,7 @@ class PosterController extends Controller
      */
     public function store(Request $request)
     {
-        $res = $request->except('_token');
-
-        $res['addtime'] = date(time());
-
-        $res['url'] = 'http://'.$res['url'];
-
+        $video = $request->except('_token');
 
         if($request->hasFile('image')){
             //自定义名字
@@ -67,20 +61,27 @@ class PosterController extends Controller
             //获取后缀
             $suffix = $request->file('image')->getClientOriginalExtension();
             //移动
-            $request->file('image')->move('uploads/guanggao',$name.'.'.$suffix);
+            $request->file('image')->move('uploads/video/image',$name.'.'.$suffix);
             
-            $res['image'] = '/uploads/guanggao/'.$name.'.'.$suffix;
-        } else {
-
-            $session['error'] = '图片不能为空';
+            $video['image'] = '/uploads/video/image/'.$name.'.'.$suffix;
         }
 
+        if($request->hasFile('url')){
+            //自定义名字
+            $name = time().rand(1111,9999);
+            //获取后缀
+            $suffix = $request->file('url')->getClientOriginalExtension();
+            //移动
+            $request->file('url')->move('uploads/video',$name.'.'.$suffix);
+            
+            $video['url'] = '/uploads/video/'.$name.'.'.$suffix;
+        }
 
         try{
-            $rs = Poster::create($res);
+            $rs = Video::create($video);
 
             if($rs){
-                return redirect('/admin/poster')->with('success','添加成功');
+                return redirect('/admin/video')->with('success','添加成功');
             }
 
         }catch(\Exception $e){
@@ -109,13 +110,11 @@ class PosterController extends Controller
      */
     public function edit($id)
     {
-        //
-        //根据id获取数据
-        $res = Poster::where('posterid',$id)->first();
+        $video = Video::where('id',$id)->first();
 
-        return view('admin.poster.edit',[
-            'title'=>'用户的修改页面',
-            'res'=>$res
+        return view('admin.video.edit',[
+            'title'=>'视频的修改页面',
+            'video'=>$video
         ]);
     }
 
@@ -128,44 +127,61 @@ class PosterController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // 获取数据
-        $rs = Poster::where('posterid',$id)->first();
 
-        $image = $rs->image; 
+        $rs = Video::where('id',$id)->first();
 
-        //表单验证
+        $image = $rs->image;
+        
 
-       
-        $res = $request->except('_token','_method');
+        $url = $rs->url;
 
-        //文件上传
+        $video = $request->except('_token','_method');
+
         if($request->hasFile('image')){
             //自定义名字
             $name = time().rand(1111,9999);
             //获取后缀
             $suffix = $request->file('image')->getClientOriginalExtension();
             //移动
-            $request->file('image')->move('uploads/guanggao',$name.'.'.$suffix);
+            $request->file('image')->move('uploads/video/image',$name.'.'.$suffix);
             
-            $res['image'] = '/uploads/guanggao/'.$name.'.'.$suffix;
+            $video['image'] = '/uploads/video/image/'.$name.'.'.$suffix;
 
-            if($res['image']){
+            if($video['image']){
                 unlink('.'.$image);
             }
+            
         }
 
+        if($request->hasFile('url')){
+            //自定义名字
+            $name = time().rand(1111,9999);
+            //获取后缀
+            $suffix = $request->file('url')->getClientOriginalExtension();
+            //移动
+            $request->file('url')->move('uploads/video',$name.'.'.$suffix);
+            
+            $video['url'] = '/uploads/video/'.$name.'.'.$suffix;
 
-        
-
-        try{
-            $rs = Poster::where('posterid',$id)->update($res);
-            if($rs){
-                return redirect('/admin/poster')->with('success','修改成功');
-            } else {
-                return redirect('/admin/poster')->with('success','未进行修改');
+            if($video['url']){
+                unlink('.'.$url);
             }
+            
+        }
+  
+        try{
+            $rs = Video::where('id',$id)->update($video);
+
+            if($rs){
+                return redirect('/admin/video')->with('success','修改成功');
+            } else {
+                return redirect('/admin/video')->with('success','未进行修改');
+            }
+
         }catch(\Exception $e){
-            return redirect('/admin/poster')->with('error','修改失败');
+
+            return back()->with('error','修改失败');
+
         }
     }
 
@@ -179,9 +195,9 @@ class PosterController extends Controller
     {
         //
         try{
-            $res = Poster::where('posterid',$id)->delete();
+            $res = Video::where('id',$id)->delete();
             if($res){
-                return redirect('/admin/poster')->with('success','删除成功');
+                return redirect('/admin/video')->with('success','删除成功');
             }
         }catch(\Exception $e){
             return back()->with('error','删除失败');

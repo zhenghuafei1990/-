@@ -15,9 +15,7 @@
 	                        <div class="title">
 	                            <i class="iconfont icon-skirt ce"></i>{{$v->tname}}
 
-
 	                        </div>	
-
 
 	                        <ul class="cat-list clearfix">
 	                            @foreach($v->sub as $kk=>$vv)
@@ -26,8 +24,6 @@
 	                        </ul>
 	                        <div class="cat-list__deploy">
 	                            <div class="deploy-box">
-
-
 	                                 <div class="genre-box clearfix">
 	                                 	@foreach($v->sub as $kk=>$vv)
 										<span class="title">{{$vv->tname}}：</span>
@@ -39,7 +35,6 @@
 										@endforeach
 									</div>                            
 
-
 	                            </div>           
 	                        </div>
 	                    </div> 
@@ -50,7 +45,7 @@
 				<a href="index.html"><li class="active">首页</li></a>
 				<a href="temp_article/udai_article10.html"><li>企业简介</li></a>
 				<a href="temp_article/udai_article5.html"><li>新手上路</li></a>
-				<a href="class_room.html"><li>U袋学堂</li></a>
+				<a href="/home/video"><li>万购视频</li></a>
 				<a href="enterprise_id.html"><li>企业账号</li></a>
 				<a href="udai_contract.html"><li>诚信合约</li></a>
 				<a href="item_remove.html"><li>实时下架</li></a>
@@ -179,8 +174,6 @@
 						</a>
 						@endforeach
 					</div>
-				
-
 				</div>
 			</div>
 			<div class="pull-right">
@@ -218,9 +211,7 @@
 							</a>
 						</div>
 						<div class="but-div">
-
 							<a href="home/selling">
-
 								<i class="but-icon"></i>
 								<p>热卖专区</p>
 							</a>
