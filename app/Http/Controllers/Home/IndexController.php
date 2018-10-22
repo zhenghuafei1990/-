@@ -25,8 +25,6 @@ class IndexController extends Controller
         $selling = DB::table('goods')->get();
         
         $rs = DB::table('lunbo')->orderBy('lid','desc')->take(6)->get();
-    	// $rs = DB::table('lunbo')->get();
-
     	return view('home.index',[
     		'title'=>'万购购物商城',
     		'poster'=>$poster,
