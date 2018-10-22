@@ -37,6 +37,7 @@ class CommentController extends Controller
 
         //前台获取的数据
         $res = $request->except('_token');
+        // dd($res);
         
         $res['uid'] = session('mid');
 

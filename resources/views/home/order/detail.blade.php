@@ -40,9 +40,6 @@
             <div class="tdf1">
                 小计
             </div>
-            <div class="tdf2">
-                样式大小
-            </div>
             <div class="tdf1">
                 评价
             </div>
@@ -69,14 +66,11 @@
                 <div class="tdf1">
                     ¥{{$v->dollar}}
                 </div>
-                <div class="tdf2">
-                    {{$v->type}}
-                </div>
                 <div class="tdf1">
                     <div class="ep2">
                         <a href="/home/comment/comments/{{$v->did}}" class="but c6">评价</a>
-                        <br>
-                        <a href="/home/comment/index/{{$v->did}}" class="but c6">查看评价</a>
+                        <!-- <br> -->
+                        <!-- <a href="/home/comment/index/{{$v->did}}" class="but c6">查看评价</a> -->
                     </div>
                 </div>
                 <div class="tdf1">

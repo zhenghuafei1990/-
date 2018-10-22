@@ -37,9 +37,6 @@
                         <th>
                             图片
                         </th>
-                        <th>
-                            类型
-                        </th>
                     </tr>
                 </thead>
                 <tbody>
@@ -65,9 +62,6 @@
                         </td>
                         <td>
                             <img src="{{$v->img}}" style='width:100px'>
-                        </td>
-                        <td>
-                            {{$v->type}}
                         </td>
                     </tr>
                     @endforeach

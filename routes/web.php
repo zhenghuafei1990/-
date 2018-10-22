@@ -188,8 +188,6 @@ Route::group(['middleware' => 'checklogin'],function(){
 	//无效订单
 	Route::any('/home/order/invalid/{id}','Home\OrdersController@invalid');
 
-	
-
 	//评论管理
 	Route::any('/home/comment/comments/{id}','Home\CommentController@comments');
 

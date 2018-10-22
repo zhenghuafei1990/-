@@ -59,10 +59,6 @@
                         rowspan="1" colspan="1" style="width: 120px;" aria-label="Engine version: activate to sort column ascending">
                             退货原因
                         </th>
-                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
-                        rowspan="1" colspan="1" style="width: 120px;" aria-label="CSS grade: activate to sort column ascending">
-                            商品样式
-                        </th>
                          <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
                         rowspan="1" colspan="1" style="width: 100px;" aria-label="CSS grade: activate to sort column ascending">
                             退货说明
@@ -104,9 +100,6 @@
                             @endif
                         </td>
                         <td class=" ">
-                            {{$v->type}}
-                        </td>
-                         <td class=" ">
                             {{$v->content}}
                         </td>
                          <td class=" ">

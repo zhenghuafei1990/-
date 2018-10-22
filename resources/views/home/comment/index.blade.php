@@ -38,14 +38,6 @@
                     </div>
                     <div class="param-row">
                         <span class="param-label">
-                            类型
-                        </span>
-                        <span class="c6 fz20">
-                            {{$detail->type}}
-                        </span>
-                    </div>
-                    <div class="param-row">
-                        <span class="param-label">
                             评论时间
                         </span>
                         <span class="c6 fz20">

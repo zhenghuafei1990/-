@@ -16,9 +16,6 @@
             <div class="name ep2">
                 {{$v->name}}
             </div>
-            <div class="type">
-                {{$v->type}}
-            </div>
             <div class="num">
                 订单编号：{{$v->oid}}
             </div>

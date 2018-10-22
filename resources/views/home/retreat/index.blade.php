@@ -51,9 +51,6 @@
                                 <div class="name ep" style="width: 180px">
                                     {{$v->name}}
                                 </div>
-                                <div class="c9 ep">
-                                    {{$v->type}}
-                                </div>
                             </td>
                             <td>
                                 {{$v->addtime}}

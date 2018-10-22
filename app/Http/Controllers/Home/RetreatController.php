@@ -32,7 +32,6 @@ class RetreatController extends Controller
     	$retreat['rid'] = date('YmdHis').mt_rand(1000,9999);
     	$retreat['oid'] = DB::table('detail')->where('did',$did)->value('oid');
     	$retreat['name'] = DB::table('detail')->where('did',$did)->value('name');
-    	$retreat['type'] = DB::table('detail')->where('did',$did)->value('type');
     	$retreat['total'] = DB::table('detail')->where('did',$did)->value('dollar');
     	$mid = session('mid');
     	$retreat['mid'] = $mid;
