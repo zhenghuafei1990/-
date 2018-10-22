@@ -36,38 +36,11 @@
 				<div class="price">免费学习</div>
 			</div>
 		</div>
-
 		@endforeach
 		<div id="dvs" style="display: none;position:absolute;margin-left:150px;z-index:10;width: 900px;background:#eee;padding: 15px">
 			<video id="video" width="870" controls="" preload="metadata" data-id="" src="" poster=""></video>
 		</div>
-		
-
 	</div>
-
-	
-	<script>
-		$(function() {
-			$('#video-modal').on('show.bs.modal', function (e) {
-				if ($('#video').data('id') != $(e.relatedTarget).data('id')) {
-					 $('#video').data('id',$(e.relatedTarget).data('id'));
-					$('#video').attr({
-						'src': $(e.relatedTarget).data('video'),
-						'poster': $(e.relatedTarget).find('img').attr('src')
-					});
-				};
-				if ($('.auto-play').hasClass('active')) {
-					$('#video').get(0).play()
-				};
-			});
-			$('.auto-play').click(function() {
-				$(this).toggleClass('active')
-			});
-			$('#video-modal').on('hide.bs.modal', function (e) {
-				$('#video').get(0).pause();
-			});
-		});
-	</script>
 </section>
 @stop
 
@@ -96,7 +69,6 @@
 
 		$('#video').attr('src','');
 
-		
 	});
 </script>
 

@@ -14,6 +14,23 @@
     <div class="mws-panel-body no-padding">
         <div id="DataTables_Table_1_wrapper" class="dataTables_wrapper" role="grid">
             <form action='/admin/retreat/index' method='get'>
+                <div id="DataTables_Table_1_length" class="dataTables_length">
+                    <label>
+                        显示
+                        <select size="1" name="num" aria-controls="DataTables_Table_1">
+                            <option value="1" @if($request->num == '1') selected="selected" @endif>
+                                1
+                            </option>
+                            <option value="3" @if($request->num == '3') selected="selected" @endif>
+                                3
+                            </option>
+                            <option value="5" @if($request->num == '5') selected="selected" @endif>
+                                5
+                            </option>
+                        </select>
+                        条数据
+                    </label>
+                </div>
             <div class="dataTables_filter" id="DataTables_Table_1_filter">
                 <label>
                     退货原因:

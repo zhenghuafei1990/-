@@ -205,7 +205,6 @@ Route::group([],function(){
 	//前台视频页面
 	Route::any('/home/video','Home\VideoController@index');
 	Route::any('/home/video/select','Home\VideoController@select');
-	Route::any('/home/video/remove','Home\VideoController@remove');
 
 });
 

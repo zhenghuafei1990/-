@@ -86,9 +86,11 @@
                                 	@endif
                                 </td>
                                 <td class="order">
+                                    @if($v->status !=3 )
                                 	<a href="/home/order/{{$v->oid}}" class="but c6">
                                         订单详情
                                     </a>
+                                    @endif
                                     @if($v->status !=2)
                                     <a href="/home/order/invalid/{{$v->oid}}" class="but c6">
 

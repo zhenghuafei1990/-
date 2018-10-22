@@ -39,7 +39,7 @@ class CommentController extends Controller
                 $query->where('star','=',$star);
             }
         })
-        ->paginate($request->input('num', 5));
+        ->paginate($request->input('num', 3));
 
 
     	return view('/admin/comment/index',[
