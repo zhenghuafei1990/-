@@ -51,7 +51,7 @@ Route::group(['middleware'=>'adminlogin'],function(){
 	//后台的分类模块
 	Route::resource('/admin/cate','Admin\CateController');
 
-	//后台的购买用户信息表
+	//后台的前台用户信息表
 	Route::resource('admin/message','Admin\MessageController');
 	
 	//后台广告管理模块
@@ -113,7 +113,7 @@ Route::group(['middleware'=>'adminlogin'],function(){
 	Route::any('home/message/youxiang','Home\MessageController@youxiang');
 	Route::any('home/message/jihuo','Home\MessageController@jihuo');
 
-	// 发送密码重置链接路由
+	//发送密码重置链接路由
 	Route::get('password/email', 'Auth\PasswordController@getEmail');
 
 	//推荐商品
@@ -133,8 +133,16 @@ Route::group(['middleware'=>'adminlogin'],function(){
 	Route::any('/home/video/select','Home\VideoController@select');
 	Route::any('/home/video/remove','Home\VideoController@remove');
 
+	//前台文章
+	Route::any('home/article','Home\ArticleController@index');
+	Route::any('home/article/{wid}','Home\ArticleController@title');
 
+	//密码重置路由
+	Route::get('home/password','Home\ForgotPasswordController@getReset');
+	Route::post('home/forgotpassword','Home\ForgotPasswordController@postReset');
 
+	//将数据存入到session
+	Route::any('/home/order/setinfo','Home\OrdersController@setinfo');
 
 Route::group(['middleware' => 'checklogin'],function(){
 
@@ -151,25 +159,13 @@ Route::group(['middleware' => 'checklogin'],function(){
 	Route::any('home/usershome/upload/{id}','Home\UsershomeController@upload');
 	Route::any('home/usershome/delete/{id}','Home\UsershomeController@delete');
 
-	
-	
-	// 密码重置路由
-	Route::get('home/password', 'Home\ForgotPasswordController@getReset');
-	Route::post('home/forgotpassword', 'Home\ForgotPasswordController@postReset');
-
-	//前台文章
-	Route::any('home/article','Home\ArticleController@index');
-	Route::any('home/article/{wid}','Home\ArticleController@title');
-
 	//前台购物车管理
 	Route::any('/home/cart','Home\CartController@index');
 
 	//前台购物车删除
 	Route::any('/home/cart/remove','Home\CartController@remove');
 
-	//将数据存入到session
-	Route::any('/home/order/setinfo','Home\OrdersController@setinfo');
-
+	
 	//前台结算中心
 	Route::any('/home/order','Home\OrdersController@getinfo');
 
@@ -206,7 +202,7 @@ Route::group(['middleware' => 'checklogin'],function(){
 
 	//退货页面
 	Route::any('/home/retreat/index','Home\RetreatController@index');
-
+	
 	Route::any('/home/comment/create/{id}','Home\CommentController@create');
 
 

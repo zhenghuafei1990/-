@@ -29,11 +29,12 @@ class UsershomeController extends Controller
         $res = $request->except('_token');
 
         $this->validate($request, [
-            'mname' => 'required',
+            'mname' => 'required|unique:message,mname',
             'phone' =>'regex:/^1[3456789]\d{9}$/',
             'email' =>'email:email',
 
         ],[
+            'mname.unique'=>'用户名已被占用',
             'mname.required' => '用户名不能为空',
             'phone.regex'=>'手机号码格式不正确',
             'email.email'=>'邮箱格式不正确',
@@ -80,7 +81,6 @@ class UsershomeController extends Controller
 
         $rs = Usershome::where('mid',$mid)->get();
 
-        // dd($rs);
     	return view('home.usershome.caddr',[
             'title'=>'收货人页面',
             'rs'=>$rs
@@ -103,25 +103,17 @@ class UsershomeController extends Controller
 
         //获取添加的收货信息
         $data = $request->except('_token');
-        
+
         $mid = session('mid');
 
-        $res = Usershome::where('mid',$mid)->get();
-
-        $ds = $res->toArray();
-
-        foreach ($ds as $k => $v) {
-            if($v['status'] == '1'){
-               
-                    $data['status'] = '0';
-                
-            } else {
-                $data['status'] = '1';
-            } 
-                
+        $res = Usershome::where('mid',$mid)->orderBy('status','desc')->first();
+        
+        //判断是否有默认地址
+        if(!empty($data['status']) && $res->status == '0'){
+            $data['status'] = '1';
+        } else {
+            $data['status'] = '0';
         }
-
-
 
         $data['mid'] = session('mid');
 

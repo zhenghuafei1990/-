@@ -51,8 +51,8 @@
 
 			</div>
 			<div class="cart-box">
-				<a href="udai_shopcart.html" class="cart-but">
-					<i class="iconfont icon-shopcart cr fz16"></i> 购物车 0 件
+				<a href="/home/cart" class="cart-but">
+					<i class="iconfont icon-shopcart cr fz16"></i> 购物车
 				</a>
 			</div>
 		</div>
