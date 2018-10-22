@@ -1,53 +1,19 @@
 @extends('layout.home')
 
-@section('title', $title)
+@section('title',$title)
 
 @section('content')
-<div class="mws-panel grid_8">
-	<div class="mws-panel-header">
-    	<span>{{$title}}</span>
-    </div>
-    <div class="mws-panel-body no-padding">
-
-		@if (count($errors) > 0)
-		    <div class="mws-form-message error">
-	        	错误信息
-	            <ul>
-	            	@foreach ($errors->all() as $error)
-		                <li>{{ $error }}</li>
-		            @endforeach
-	            </ul>
-	        </div>
-		@endif
-	</div>
-</div>
-<div class="top-nav bg3">
-		<div class="nav-box inner">
-			<div class="all-cat">
-				<div class="title"><i class="iconfont icon-menu"></i> 全部分类</div>
-			</div>
-			<ul class="nva-list">
-				<a href="index.html"><li>首页</li></a>
-				<a href="temp_article/udai_article10.html"><li>企业简介</li></a>
-				<a href="temp_article/udai_article5.html"><li>新手上路</li></a>
-				<a href="class_room.html"><li>U袋学堂</li></a>
-				<a href="enterprise_id.html"><li>企业账号</li></a>
-				<a href="udai_contract.html"><li>诚信合约</li></a>
-				<a href="item_remove.html"><li>实时下架</li></a>
-			</ul>
-		</div>
-	</div>
 	<div class="content inner">
 		<section class="filter-section clearfix">
 			<ol class="breadcrumb">
 				<li><a href="index.html">首页</a></li>
-				<li class="active">热卖专区</li>
 			</ol>
 			<div class="filter-box">
 				<div class="all-filter">
 					<div class="filter-value">
-						
+						<a href="" class="sale-title active">满减专区</a>
 						<a href="" class="sale-title">热卖专区</a>
+						<a href="" class="sale-title">折扣专区</a>
 					</div>
 				</div>
 			</div>
@@ -62,40 +28,45 @@
 		<section class="item-show__div clearfix">
 			<div class="pull-left">
 				<div class="item-list__area clearfix">
-				@foreach($selling as $k=>$v)
+					@foreach($rs as $k=>$v)
 					<div class="item-card">
-						<a href="/home/ecommend/{{$v->id}}" class="photo">
-							<img src="{{$v->picture}}" alt="" class="cover">
+						<a href="/home/goods/details/{{$v->id}}" class="photo">
+							<img src="/{{$v->picture}}" alt="{{$v->gname}}" class="cover">
 							<div class="name">{{$v->gname}}</div></a>
 						<div class="middle">
 							<div class="price"><small>￥</small>{{$v->price}}</div>
-							
+							<div class="sale"><a href="">加入购物车</a></div>
 						</div>
 						<div class="buttom">
-							<div>销量 <b>{{$v->num}}</b></div>
+							<div>库存 <b>{{$v->stock}}</b></div>
 							<div>人气 <b>888</b></div>
 							<div>评论 <b>1688</b></div>
 						</div>
 					</div>
-				@endforeach
+					@endforeach
 				</div>
+				<style type="text/css">					
+            	   .pagination li  {
+            			float:left;
+					    color: #666;
+					    padding: 10px 15px;
+					    margin: 5px;
+					    line-height: 1em;
+					    border: 1px solid #999;
+					    display: inline-block;
+					    text-decoration: none;
+					    cursor: pointer;
+					}
+            		.pagination .active {
+            			    background-color:#b31e22;
+            			    color: #323232;
+    						border: none;
+    						background-image: none;
+    						box-shadow: inset 0px 0px 4px rgba(0, 0, 0, 0.25);
+            		}
+				</style>
 				<!-- 分页 -->
-				<div class="page text-right clearfix">
-					<a class="disabled">上一页</a>
-					<a class="select">1</a>
-					<a href="">2</a>
-					<a href="">3</a>
-					<a href="">4</a>
-					<a href="">5</a>
-					<a class="" href="">下一页</a>
-					<a class="disabled">1/5页</a>
-					<form action="" class="page-order">
-						到第
-						<input type="text" name="page">
-						页
-						<input class="sub" type="submit" value="确定">
-					</form>
-				</div>
+						{{$rs->links()}}
 			</div>
 			<div class="pull-right">
 				
@@ -104,9 +75,9 @@
 						<span class="c6">爆款推荐</span>
 					</div>
 					<div class="picked-box">
-					@foreach($stock as $k=>$v)
-						<a href="" class="picked-item"><img src="{{$v->picture}}" alt="" class="cover"><span class="look_price">¥{{$v->price}}</span></a>
-					@endforeach
+						@foreach($res as $k=>$v)
+						<a href="/home/goods/details/{{$v->id}}" class="picked-item"><img src="/{{$v->picture}}" alt="" class="cover"><span class="look_price">¥{{$v->price}}</span></a>
+						@endforeach
 					</div>
 				</div>
 			</div>
@@ -150,11 +121,12 @@
 				<div class="r-tip__box"><span class="r-tip-text">返回顶部</span></div>
 			</li>
 		</ul>
+	</div>	
+	@stop
+
+	@section('js')	
 		<script>
 			$(document).ready(function(){ $('.to-top').toTop({position:false}) });
 		</script>
 	</div>
-
-
-
-@stop
+	@stop

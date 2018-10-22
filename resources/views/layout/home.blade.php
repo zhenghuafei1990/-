@@ -14,6 +14,7 @@
 	<script src="/home/js/swiper.min.js" charset="UTF-8"></script>
 	<script src="/home/js/global.js" charset="UTF-8"></script>
 	<script src="/home/js/jquery.DJMask.2.1.1.js" charset="UTF-8"></script>
+	<script src="/home/js/jquery.3.2.1.min.js" charset="UTF-8"></script>
     <script type="text/javascript" src="/home/js/jquery-1.8.3.min.js"></script>
 	<title>@yield('title')</title>
 </head>
@@ -37,7 +38,7 @@
 	<!-- 搜索栏 -->
 	<div class="top-search">
 		<div class="inner">
-			<a class="logo" href="/"><img src="logo/logo.png" alt="万购网" class="cover"></a>
+			<a class="logo" href="/"><img src="/logo/logo.png" alt="万购网" class="cover"></a>
 			<div class="search-box">
 				<form class="input-group">
 					<input placeholder="Ta们都在搜万购网" type="text">

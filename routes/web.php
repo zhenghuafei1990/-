@@ -78,11 +78,8 @@ Route::group(['middleware'=>'adminlogin'],function(){
 	//后台的商品模块
 	Route::resource('/admin/goods','Admin\GoodsController');
 
-
 	//后台商品主图删除
 	Route::any('/admin/goods/picture/{id}','Admin\GoodsController@picture');
-
-
 
 	//后台订单管理
 	Route::resource('admin/orders','Admin\OrdersController');
@@ -105,19 +102,42 @@ Route::group(['middleware'=>'adminlogin'],function(){
 });
 
 
-Route::group([],function(){
-
 	//前台登录
 	Route::any('home/login','Home\LoginController@login');
 	Route::any('home/dologin','Home\LoginController@dologin');
 	Route::any('home/empty','Home\LoginController@empty');
-
 
 	//前台注册
 	Route::any('home/message','Home\MessageController@index');
 	Route::any('home/message/create','Home\MessageController@create');
 	Route::any('home/message/youxiang','Home\MessageController@youxiang');
 	Route::any('home/message/jihuo','Home\MessageController@jihuo');
+
+	// 发送密码重置链接路由
+	Route::get('password/email', 'Auth\PasswordController@getEmail');
+
+	//推荐商品
+	Route::any('/home/ecommend/{id}','Home\EcommendController@ecommend');
+
+	//热卖商品
+	Route::any('/home/selling','Home\SellingController@selling');
+
+	//前台商品列表页
+	Route::any('/home/goods/list/{id}','Home\GoodsController@list');
+
+	//前台商品详情页
+	Route::any('/home/goods/details/{id}','Home\GoodsController@details');
+
+	//前台视频页面
+	Route::any('/home/video','Home\VideoController@index');
+	Route::any('/home/video/select','Home\VideoController@select');
+	Route::any('/home/video/remove','Home\VideoController@remove');
+
+
+
+
+Route::group(['middleware' => 'checklogin'],function(){
+
 
 	//前台个人中心+个人资料
 	Route::any('home/usershome','Home\UsershomeController@index');
@@ -131,8 +151,7 @@ Route::group([],function(){
 	Route::any('home/usershome/upload/{id}','Home\UsershomeController@upload');
 	Route::any('home/usershome/delete/{id}','Home\UsershomeController@delete');
 
-	// 发送密码重置链接路由
-	Route::get('password/email', 'Auth\PasswordController@getEmail');
+	
 	
 	// 密码重置路由
 	Route::get('home/password', 'Home\ForgotPasswordController@getReset');
@@ -169,11 +188,7 @@ Route::group([],function(){
 	//无效订单
 	Route::any('/home/order/invalid/{id}','Home\OrdersController@invalid');
 
-	//推荐商品
-	Route::any('/home/ecommend/{id}','Home\EcommendController@ecommend');
-
-	//热卖商品
-	Route::any('/home/selling','Home\SellingController@selling');
+	
 
 	//评论管理
 	Route::any('/home/comment/comments/{id}','Home\CommentController@comments');
@@ -196,15 +211,21 @@ Route::group([],function(){
 
 	Route::any('/home/comment/create/{id}','Home\CommentController@create');
 
+
 	//前台商品列表页
 	Route::any('/home/goods/list/{id}','Home\GoodsController@list');
 
 	//前台商品详情页
 	Route::any('/home/goods/details/{id}','Home\GoodsController@details');
 
+	//前台商品主类别列表页
+	Route::any('/home/goods/floor/{id}','Home\GoodsController@floor');
+	//前台商品主类详情页
+	Route::any('/home/goods/floor_details/{id}','Home\GoodsController@floor_details');
 	//前台视频页面
 	Route::any('/home/video','Home\VideoController@index');
 	Route::any('/home/video/select','Home\VideoController@select');
+
 
 });
 
