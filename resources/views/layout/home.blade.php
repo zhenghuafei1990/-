@@ -38,7 +38,7 @@
 	<!-- 搜索栏 -->
 	<div class="top-search">
 		<div class="inner">
-			<a class="logo" href="/"><img src="logo/logo.png" alt="万购网" class="cover"></a>
+			<a class="logo" href="/"><img src="/logo/logo.png" alt="万购网" class="cover"></a>
 			<div class="search-box">
 				<form class="input-group">
 					<input placeholder="Ta们都在搜万购网" type="text">

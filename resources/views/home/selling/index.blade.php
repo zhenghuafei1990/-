@@ -41,14 +41,13 @@
 		<section class="filter-section clearfix">
 			<ol class="breadcrumb">
 				<li><a href="index.html">首页</a></li>
-				<li class="active">满减专区</li>
+				<li class="active">热卖专区</li>
 			</ol>
 			<div class="filter-box">
 				<div class="all-filter">
 					<div class="filter-value">
-						<a href="" class="sale-title active">满减专区</a>
+						
 						<a href="" class="sale-title">热卖专区</a>
-						<a href="" class="sale-title">折扣专区</a>
 					</div>
 				</div>
 			</div>
