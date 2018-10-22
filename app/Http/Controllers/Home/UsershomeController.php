@@ -29,18 +29,21 @@ class UsershomeController extends Controller
         $res = $request->except('_token');
 
         $this->validate($request, [
-            'mname' => 'required|unique:message,mname',
+            'mname' => 'required',
             'phone' =>'regex:/^1[3456789]\d{9}$/',
             'email' =>'email:email',
 
         ],[
-            'mname.unique'=>'用户名已被占用',
             'mname.required' => '用户名不能为空',
             'phone.regex'=>'手机号码格式不正确',
             'email.email'=>'邮箱格式不正确',
         ]);
 
         $rs = Message::where('mid',$id)->first();
+
+        if($rs->mname == $res['mname']){
+            return redirect('/home/usershome')->with('error','修改失败');
+        }
 
         $head = $rs->header; 
 
