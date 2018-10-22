@@ -158,7 +158,7 @@
 				</div>
 				<div class="con-box">
 					<a class="left-img hot-img" href="">
-<<<<<<< HEAD
+
 						<img src="/uploads/goods/2.jpg" alt="" class="cover">
 					</a>
 				
