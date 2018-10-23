@@ -26,19 +26,16 @@ Route::any('/admin/dologin','Admin\LoginController@dologin');
 Route::any('/admin/cap','Admin\LoginController@cap');
 
 
-
 //后台管理
 Route::group(['middleware'=>'adminlogin'],function(){
 
 	//后台首页
 	Route::any('admin','Admin\IndexController@index');
-
-	//后台的用户模块
+//后台的用户模块
 	Route::resource('admin/user','Admin\UserController');
-
-	//修改头像
+//修改头像
 	Route::any('admin/profile','Admin\LoginController@profile');
-	Route::any('admin/doprofile','Admin\LoginController@doprofile');
+	Route::any('admin/doprofile','Admin\LoginController@doprofile');	
 
 	//修改密码
 	Route::any('admin/pass','Admin\LoginController@pass');
@@ -51,7 +48,7 @@ Route::group(['middleware'=>'adminlogin'],function(){
 	//后台的分类模块
 	Route::resource('/admin/cate','Admin\CateController');
 
-	//后台的购买用户信息表
+	//后台的前台用户信息表
 	Route::resource('admin/message','Admin\MessageController');
 	
 	//后台广告管理模块
@@ -113,7 +110,7 @@ Route::group(['middleware'=>'adminlogin'],function(){
 	Route::any('home/message/youxiang','Home\MessageController@youxiang');
 	Route::any('home/message/jihuo','Home\MessageController@jihuo');
 
-	// 发送密码重置链接路由
+	//发送密码重置链接路由
 	Route::get('password/email', 'Auth\PasswordController@getEmail');
 
 	//推荐商品
@@ -133,6 +130,15 @@ Route::group(['middleware'=>'adminlogin'],function(){
 	Route::any('/home/video/select','Home\VideoController@select');
 	Route::any('/home/video/remove','Home\VideoController@remove');
 
+	//前台文章
+	Route::any('home/article/{id}','Home\ArticleController@index');
+
+	//密码重置路由
+	Route::get('home/password','Home\ForgotPasswordController@getReset');
+	Route::post('home/forgotpassword','Home\ForgotPasswordController@postReset');
+
+	//将数据存入到session
+	Route::any('/home/order/setinfo','Home\OrdersController@setinfo');
 
 
 
@@ -151,25 +157,13 @@ Route::group(['middleware' => 'checklogin'],function(){
 	Route::any('home/usershome/upload/{id}','Home\UsershomeController@upload');
 	Route::any('home/usershome/delete/{id}','Home\UsershomeController@delete');
 
-	
-	
-	// 密码重置路由
-	Route::get('home/password', 'Home\ForgotPasswordController@getReset');
-	Route::post('home/forgotpassword', 'Home\ForgotPasswordController@postReset');
-
-	//前台文章
-	Route::any('home/article','Home\ArticleController@index');
-	Route::any('home/article/{wid}','Home\ArticleController@title');
-
 	//前台购物车管理
 	Route::any('/home/cart','Home\CartController@index');
 
 	//前台购物车删除
 	Route::any('/home/cart/remove','Home\CartController@remove');
 
-	//将数据存入到session
-	Route::any('/home/order/setinfo','Home\OrdersController@setinfo');
-
+	
 	//前台结算中心
 	Route::any('/home/order','Home\OrdersController@getinfo');
 
@@ -187,8 +181,6 @@ Route::group(['middleware' => 'checklogin'],function(){
 
 	//无效订单
 	Route::any('/home/order/invalid/{id}','Home\OrdersController@invalid');
-
-	
 
 	//评论管理
 	Route::any('/home/comment/comments/{id}','Home\CommentController@comments');
@@ -208,11 +200,26 @@ Route::group(['middleware' => 'checklogin'],function(){
 
 	//退货页面
 	Route::any('/home/retreat/index','Home\RetreatController@index');
-
+	
 	Route::any('/home/comment/create/{id}','Home\CommentController@create');
 
-	
 
+	//前台商品列表页
+	Route::any('/home/goods/list/{id}','Home\GoodsController@list');
+
+	//前台商品详情页
+	Route::any('/home/goods/details/{id}','Home\GoodsController@details');
+
+	//前台商品搜索
+	Route::any('/home/goods/search','Home\GoodsController@search');
+	//前台商品主类别列表页
+	Route::any('/home/goods/floor/{id}','Home\GoodsController@floor');
+	//前台商品主类详情页
+	Route::any('/home/goods/floor_details/{id}','Home\GoodsController@floor_details');
+	//前台视频页面
+	Route::any('/home/video','Home\VideoController@index');
+	Route::any('/home/video/select','Home\VideoController@select');
+	Route::any('/home/video/remove','Home\VideoController@remove');
 });
 
 

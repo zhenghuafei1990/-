@@ -38,7 +38,7 @@ class GoodsController extends Controller
             }
 
         })
-        ->paginate($request->input('num', 10));      
+        ->paginate($request->input('num', 8));      
             
         return view('admin.goods.index',[
             'title'=>'商品列表页',
@@ -72,7 +72,7 @@ class GoodsController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    {/*
+    {
         //1.表单验证
         $this->validate($request, [
              'gname' => 'required|regex:/[\x{4e00}-\x{9fa5}]+/u',
@@ -85,7 +85,7 @@ class GoodsController extends Controller
              'gname.regex'=>'商品名称字数不能少于5位多于20位',            
              'price.integer'=>'价格格式不正确',
              'stock.regex'=>'库存格式不正确'
-        ]);*/
+        ]);
        //获取提交过来的数据
         $rs = $request->except('_token','gpic','picture');
        

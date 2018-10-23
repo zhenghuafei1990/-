@@ -54,11 +54,11 @@ class CateController extends Controller
     public function store(Request $request)
     {
         //表单验证
-        /*$this->validate($request, [
-            'cate' => 'required',
+        $this->validate($request, [
+            'tname' => 'required',
         ],[
-            'cate.require'=>'分类名不能为空',
-        ]);*/
+            'tname.required'=>'分类名不能为空',
+        ]);
 
         //获取数据
         $rs = $request->except('_token');

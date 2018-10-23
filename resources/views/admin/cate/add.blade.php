@@ -8,6 +8,16 @@
         	<span>商品类别管理页面</span>
         </div>
         <div class="mws-panel-body no-padding">
+            @if (count($errors) > 0)
+            <div class="mws-form-message error">
+                <b>错误信息:</b>
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li><b>{{ $error }}</b></li>
+                    @endforeach
+                </ul>
+            </div>
+            @endif
         	<form class="mws-form" action="/admin/cate" method="post">
         		<div class="mws-form-inline">
         			<div class="mws-form-row">

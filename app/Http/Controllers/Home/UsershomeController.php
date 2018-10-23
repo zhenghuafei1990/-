@@ -41,6 +41,10 @@ class UsershomeController extends Controller
 
         $rs = Message::where('mid',$id)->first();
 
+        if($rs->mname == $res['mname']){
+            return redirect('/home/usershome')->with('error','修改失败');
+        }
+
         $head = $rs->header; 
 
         if($request->hasFile('header')){
@@ -80,7 +84,6 @@ class UsershomeController extends Controller
 
         $rs = Usershome::where('mid',$mid)->get();
 
-        // dd($rs);
     	return view('home.usershome.caddr',[
             'title'=>'收货人页面',
             'rs'=>$rs
@@ -103,25 +106,17 @@ class UsershomeController extends Controller
 
         //获取添加的收货信息
         $data = $request->except('_token');
-        
+
         $mid = session('mid');
 
-        $res = Usershome::where('mid',$mid)->get();
-
-        $ds = $res->toArray();
-
-        foreach ($ds as $k => $v) {
-            if($v['status'] == '1'){
-               
-                    $data['status'] = '0';
-                
-            } else {
-                $data['status'] = '1';
-            } 
-                
+        $res = Usershome::where('mid',$mid)->orderBy('status','desc')->first();
+        
+        //判断是否有默认地址
+        if(!empty($data['status']) && $res->status == '0'){
+            $data['status'] = '1';
+        } else {
+            $data['status'] = '0';
         }
-
-
 
         $data['mid'] = session('mid');
 
