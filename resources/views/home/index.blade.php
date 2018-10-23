@@ -249,7 +249,7 @@
 			</div>
 			<div class="con-box">
 				<a class="left-img hot-img" href="">
-					<img src="/home/images/floor_2.jpg" alt="" class="cover">
+					<img src="{{$v->picture}}" alt="" class="cover">
 				</a>
 				<div class="right-box">
 					@foreach($rs as $kk=>$vv)

@@ -13,7 +13,7 @@ class GoodsController extends Controller
     //前台商品列表页
     public function list($id)
     {
-    	$rs = DB::table('goods')->where('tid',$id)->paginate(20);
+    	$rs = DB::table('goods')->where('tid',$id)->paginate(10);
     	$res = DB::table('goods')->orderBy('stock','asc')->take(10)->get();
     	
     	return view('/home/goods/list',[

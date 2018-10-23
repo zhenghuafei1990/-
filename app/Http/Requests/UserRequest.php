@@ -24,7 +24,7 @@ class UserRequest extends FormRequest
     public function rules()
     {
         return [
-            'username' => 'required|regex:/^\w{4,12}$/',
+            'username' => 'required|unique:users,username|regex:/^\w{4,12}$/',
             'password' => 'required|regex:/^\S{4,12}$/',
             'repass'   => 'same:password',
         ];
@@ -37,6 +37,7 @@ class UserRequest extends FormRequest
     public function messages()
     {
         return [
+            'username.unique'=>'用户名已被占用',
             'username.required' => '用户名称不能为空',
             'password.required'  => '用户密码不能为空',
             'username.regex'  => '用户名称格式不正确',

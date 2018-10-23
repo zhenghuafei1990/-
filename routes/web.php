@@ -26,19 +26,16 @@ Route::any('/admin/dologin','Admin\LoginController@dologin');
 Route::any('/admin/cap','Admin\LoginController@cap');
 
 
-
 //后台管理
 Route::group(['middleware'=>'adminlogin'],function(){
 
 	//后台首页
 	Route::any('admin','Admin\IndexController@index');
-
-	//后台的用户模块
+//后台的用户模块
 	Route::resource('admin/user','Admin\UserController');
-
-	//修改头像
+//修改头像
 	Route::any('admin/profile','Admin\LoginController@profile');
-	Route::any('admin/doprofile','Admin\LoginController@doprofile');
+	Route::any('admin/doprofile','Admin\LoginController@doprofile');	
 
 	//修改密码
 	Route::any('admin/pass','Admin\LoginController@pass');
