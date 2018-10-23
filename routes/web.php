@@ -131,8 +131,7 @@ Route::group(['middleware'=>'adminlogin'],function(){
 	Route::any('/home/video/remove','Home\VideoController@remove');
 
 	//前台文章
-	Route::any('home/article','Home\ArticleController@index');
-	Route::any('home/article/{wid}','Home\ArticleController@title');
+	Route::any('home/article/{id}','Home\ArticleController@index');
 
 	//密码重置路由
 	Route::get('home/password','Home\ForgotPasswordController@getReset');
@@ -140,6 +139,8 @@ Route::group(['middleware'=>'adminlogin'],function(){
 
 	//将数据存入到session
 	Route::any('/home/order/setinfo','Home\OrdersController@setinfo');
+
+
 
 Route::group(['middleware' => 'checklogin'],function(){
 
