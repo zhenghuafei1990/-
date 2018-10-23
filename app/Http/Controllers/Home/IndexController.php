@@ -19,7 +19,7 @@ class IndexController extends Controller
 
     	$poster = Poster::get();
 
-        $ecommend = DB::table('goods')->get();
+        $ecommend =  DB::table('goods')->orderBy('stock','desc')->take(6)->get();
 
         $selling = DB::table('goods')->get();
         

@@ -48,7 +48,7 @@
 				</ol>
 				<div class="item-pic__box" id="magnifier">
 					<div class="small-box">
-						<img class="cover" src="{{$ecommend->picture}}" alt="{{$ecommend->gname}}">
+						<img class="cover" src="/{{$ecommend->picture}}" alt="{{$ecommend->gname}}">
 						<span class="hover"></span>
 					</div>
 					<div class="thumbnail-box">
@@ -56,7 +56,7 @@
 						<div class="thumb-list">
 							<ul class="wrapper clearfix">
 							@foreach($spicture as $k=>$v)
-								<li class="item active" data-src="{{$v->gpic}}"><img class="cover" src="{{$v->gpic}}" alt="商品预览图"></li>
+								<li class="item active" data-src="/{{$v->gpic}}"><img class="cover" src="/{{$v->gpic}}" alt="商品预览图"></li>
 							@endforeach
 							</ul>
 						</div>
@@ -187,8 +187,8 @@
 					<div class="swiper-wrapper">
 						<div class="swiper-slide">
 						@foreach($stock as $k=>$v)
-							<a class="picked-item" href="">
-								<img src="{{$v->picture}}" alt="" class="cover">
+							<a class="picked-item" href="/home/ecommend/{{$v->id}}">
+								<img src="/{{$v->picture}}" alt="" class="cover">
 								<div class="look_price">{{$v->price}}</div>
 							</a>
 						@endforeach	
@@ -223,7 +223,7 @@
 				<div class="tab-content">
 					<div role="tabpanel" class="tab-pane fade in active" id="detail" aria-labelledby="detail-tab">
 						<div class="item-detail__info clearfix">
-							<div class="record">商品编号：D-8812</div>
+							<div class="record">商品编号：D-88{{$ecommend->id}}</div>
 							<div class="record">上架时间：{{$ecommend->addtime}}</div>
 							<div class="record">商品毛重：200克</div>
 							<div class="record">商品库存：{{$ecommend->stock}}</div>
@@ -232,15 +232,15 @@
 							<p style="text-align: center;">
 								<i id="desc-module-1" style="font-size: 0"></i>
 
-								<img src="images/temp/S-001_1.jpg" alt=""><br><img src="images/temp/S-001_2.jpg" alt=""><br>
+								{!!$ecommend->content!!}
 
-								<i id="desc-module-2" style="font-size: 0"></i><img src="images/temp/S-001_3.jpg" alt=""><br><img src="images/temp/S-001_4.jpg" alt=""><br><img src="images/temp/S-001_5.jpg" alt=""><br><img src="images/temp/S-001_6.jpg" alt=""><br><img src="images/temp/S-001_7.jpg" alt=""><br><img src="images/temp/S-001_8.jpg" alt=""><br>
+								<i id="desc-module-2" style="font-size: 0"></i>
 								
-								<i id="desc-module-3" style="font-size: 0"></i><img src="images/temp/S-001_9.jpg" alt=""><br><img src="images/temp/S-001_10.jpg" alt=""><br><img src="images/temp/S-001_11.jpg" alt=""><br><img src="images/temp/S-001_12.jpg" alt=""><br>
+								<i id="desc-module-3" style="font-size: 0"></i>
 								
-								<i id="desc-module-4" style="font-size: 0"></i><img src="images/temp/S-001_13.jpg" alt=""><br><img src="images/temp/S-001_14.jpg" alt=""><br><img src="images/temp/S-001_15.jpg" alt=""><br><img src="images/temp/S-001_16.jpg" alt=""><br><img src="images/temp/S-001_17.jpg" alt=""><br><img src="images/temp/S-001_18.jpg" alt=""><br><img src="images/temp/S-001_19.jpg" alt=""><br><img src="images/temp/S-001_20.jpg" alt=""><br><img src="images/temp/S-001_21.jpg" alt=""><br><img src="images/temp/S-001_22.jpg" alt=""><br><img src="images/temp/S-001_23.jpg" alt=""><br><img src="images/temp/S-001_24.jpg" alt=""><br><img src="images/temp/S-001_25.jpg" alt=""><br><img src="images/temp/S-001_26.jpg" alt=""><br><img src="images/temp/S-001_27.jpg" alt=""><br><img src="images/temp/S-001_28.jpg" alt=""><br><img src="images/temp/S-001_29.jpg" alt=""><br><img src="images/temp/S-001_30.jpg" alt=""><br><img src="images/temp/S-001_31.jpg" alt=""><br><img src="images/temp/S-001_32.jpg" alt=""><br><img src="images/temp/S-001_33.jpg" alt=""><br><img src="images/temp/S-001_34.jpg" alt=""><br><img src="images/temp/S-001_35.jpg" alt=""><br><img src="images/temp/S-001_36.jpg" alt=""><br>
+								<i id="desc-module-4" style="font-size: 0"></i>
 								
-								<i id="desc-module-5" style="font-size: 0"></i><img src="images/temp/S-001_37.jpg" alt=""><br><img src="images/temp/S-001_38.jpg" alt=""><br><img src="images/temp/S-001_39.jpg" alt=""><br><img src="images/temp/S-001_40.jpg" alt=""><br><img src="images/temp/S-001_41.png" width="790" alt="">
+								<i id="desc-module-5" style="font-size: 0"></i>
 							</p>
 						</div>
 					</div>
@@ -1092,8 +1092,8 @@
 						<div class="swiper-wrapper">
 							<div class="swiper-slide">
 							@foreach($stock as $k=>$v)
-								<a class="picked-item" href="">
-									<img src="{{$v->picture}}" alt="" class="cover">
+								<a class="picked-item" href="/home/ecommend/{{$v->id}}">
+									<img src="/{{$v->picture}}" alt="" class="cover">
 									<div class="look_price">¥{{$v->price}}</div>
 								</a>
 							@endforeach	

@@ -11,7 +11,7 @@ class EcommendController extends Controller
     {
         $ecommend = DB::table('goods')->where('id',$id)->first();
         $spicture = DB::table('goodspicture')->where('gid',$id)->get();
-    	$stock = DB::table('goods')->orderBy('stock','asc')->take(6)->get();
+    	$stock = DB::table('goods')->orderBy('stock','desc')->take(6)->get();
         // dd($ecommend);
   	
         return view('home.ecommend.index',[

@@ -5,7 +5,7 @@
 @section('content')
 <div class="mws-panel grid_8">
 	<div class="mws-panel-header">
-    	<span>{{$title}}</span>
+    	
     </div>
     <div class="mws-panel-body no-padding">
 
@@ -27,7 +27,7 @@
 				<div class="title"><i class="iconfont icon-menu"></i> 全部分类</div>
 			</div>
 			<ul class="nva-list">
-				<a href="index.html"><li>首页</li></a>
+				<a href="/"><li>首页</li></a>
 				<a href="temp_article/udai_article10.html"><li>企业简介</li></a>
 				<a href="temp_article/udai_article5.html"><li>新手上路</li></a>
 				<a href="class_room.html"><li>U袋学堂</li></a>
@@ -40,7 +40,7 @@
 	<div class="content inner">
 		<section class="filter-section clearfix">
 			<ol class="breadcrumb">
-				<li><a href="index.html">首页</a></li>
+				<li><a href="/">首页</a></li>
 				<li class="active">热卖专区</li>
 			</ol>
 			<div class="filter-box">
@@ -65,7 +65,7 @@
 				@foreach($selling as $k=>$v)
 					<div class="item-card">
 						<a href="/home/ecommend/{{$v->id}}" class="photo">
-							<img src="{{$v->picture}}" alt="" class="cover">
+							<img src="/{{$v->picture}}" alt="" class="cover">
 							<div class="name">{{$v->gname}}</div></a>
 						<div class="middle">
 							<div class="price"><small>￥</small>{{$v->price}}</div>
@@ -79,23 +79,7 @@
 					</div>
 				@endforeach
 				</div>
-				<!-- 分页 -->
-				<div class="page text-right clearfix">
-					<a class="disabled">上一页</a>
-					<a class="select">1</a>
-					<a href="">2</a>
-					<a href="">3</a>
-					<a href="">4</a>
-					<a href="">5</a>
-					<a class="" href="">下一页</a>
-					<a class="disabled">1/5页</a>
-					<form action="" class="page-order">
-						到第
-						<input type="text" name="page">
-						页
-						<input class="sub" type="submit" value="确定">
-					</form>
-				</div>
+				
 			</div>
 			<div class="pull-right">
 				
@@ -105,7 +89,7 @@
 					</div>
 					<div class="picked-box">
 					@foreach($stock as $k=>$v)
-						<a href="" class="picked-item"><img src="{{$v->picture}}" alt="" class="cover"><span class="look_price">¥{{$v->price}}</span></a>
+						<a href="" class="picked-item"><img src="/{{$v->picture}}" alt="" class="cover"><span class="look_price">¥{{$v->price}}</span></a>
 					@endforeach
 					</div>
 				</div>
