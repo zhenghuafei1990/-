@@ -17,6 +17,26 @@
 	<script src="/home/js/jquery.3.2.1.min.js" charset="UTF-8"></script>
     <script type="text/javascript" src="/home/js/jquery-1.8.3.min.js"></script>
 	<title>@yield('title')</title>
+	<style type="text/css">
+		#h_in {
+		    height: 36px;
+		    width: 450px;
+		    position: absolute;
+		    left: 364px;
+		    top: 26px;
+		    border: 2px solid #b1191a;
+		}
+		#h_btn {
+		    height: 36px;
+		    width: 80px;
+		    position: absolute;
+		    left: 805px;
+		    top: 26px;
+		    border: 2px solid #b1191a;
+		    background-color: #b1191a;
+		    color: white;
+		}
+	</style>
 </head>
 <body>
 	<!-- 顶部tab -->
@@ -39,17 +59,11 @@
 	<div class="top-search">
 		<div class="inner">
 			<a class="logo" href="/"><img src="/logo/logo.png" alt="万购网" class="cover"></a>
-			<div class="search-box">
-				<form class="input-group">
-					<input placeholder="Ta们都在搜万购网" type="text">
-					<span class="input-group-btn">
-						<button type="button">
-							<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-						</button>
-					</span>
-				</form>
-
-			</div>
+			<form method="post" action="/home/goods/search">
+				{{csrf_field()}}
+				<input id="h_in" type="text" name="gname" placeholder=" 商品名称" value="">
+				<input id="h_btn" type="submit" value="搜索">
+			</form>
 			<div class="cart-box">
 				<a href="/home/cart" class="cart-but">
 					<i class="iconfont icon-shopcart cr fz16"></i> 购物车

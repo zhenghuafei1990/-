@@ -26,19 +26,16 @@ Route::any('/admin/dologin','Admin\LoginController@dologin');
 Route::any('/admin/cap','Admin\LoginController@cap');
 
 
-
 //后台管理
 Route::group(['middleware'=>'adminlogin'],function(){
 
 	//后台首页
 	Route::any('admin','Admin\IndexController@index');
-
-	//后台的用户模块
+//后台的用户模块
 	Route::resource('admin/user','Admin\UserController');
-
-	//修改头像
+//修改头像
 	Route::any('admin/profile','Admin\LoginController@profile');
-	Route::any('admin/doprofile','Admin\LoginController@doprofile');
+	Route::any('admin/doprofile','Admin\LoginController@doprofile');	
 
 	//修改密码
 	Route::any('admin/pass','Admin\LoginController@pass');
@@ -134,8 +131,7 @@ Route::group(['middleware'=>'adminlogin'],function(){
 	Route::any('/home/video/remove','Home\VideoController@remove');
 
 	//前台文章
-	Route::any('home/article','Home\ArticleController@index');
-	Route::any('home/article/{wid}','Home\ArticleController@title');
+	Route::any('home/article/{id}','Home\ArticleController@index');
 
 	//密码重置路由
 	Route::get('home/password','Home\ForgotPasswordController@getReset');
@@ -143,6 +139,8 @@ Route::group(['middleware'=>'adminlogin'],function(){
 
 	//将数据存入到session
 	Route::any('/home/order/setinfo','Home\OrdersController@setinfo');
+
+
 
 Route::group(['middleware' => 'checklogin'],function(){
 
@@ -209,6 +207,8 @@ Route::group(['middleware' => 'checklogin'],function(){
 	//前台商品详情页
 	Route::any('/home/goods/details/{id}','Home\GoodsController@details');
 
+	//前台商品搜索
+	Route::any('/home/goods/search','Home\GoodsController@search');
 	//前台商品主类别列表页
 	Route::any('/home/goods/floor/{id}','Home\GoodsController@floor');
 	//前台商品主类详情页
@@ -217,6 +217,7 @@ Route::group(['middleware' => 'checklogin'],function(){
 	Route::any('/home/video','Home\VideoController@index');
 	Route::any('/home/video/select','Home\VideoController@select');
 
+	Route::any('/home/video/remove','Home\VideoController@remove');
 
 });
 

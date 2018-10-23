@@ -3,7 +3,22 @@
 @section('title',$title)
 
 @section('content')
-
+<div class="top-nav bg3">
+		<div class="nav-box inner">
+			<div class="all-cat">
+				<div class="title"><i class="iconfont icon-menu"></i> 全部分类</div>
+			</div>
+			<ul class="nva-list">
+				<a href="/"><li>首页</li></a>
+				<a href="temp_article/udai_article10.html"><li>企业简介</li></a>
+				<a href="temp_article/udai_article5.html"><li>新手上路</li></a>
+				<a href="/home/video"><li>万购视频</li></a>
+				<a href="enterprise_id.html"><li>企业账号</li></a>
+				<a href="udai_contract.html"><li>诚信合约</li></a>
+				<a href="item_remove.html"><li>实时下架</li></a>
+			</ul>
+		</div>
+	</div>
 <!-- 首页导航栏 -->
 
 	<div class="content inner">
@@ -11,83 +26,90 @@
 			<div class="filter-value">
 				<div class="filter-title">平台公告</div>
 			</div>
+			
 			<div class="pull-left">
 				<div class="msg-list">
-					@foreach($article as $k=>$v)
-					<a class="ep active" href="/home/article/{{$v->wid}}">
-						{{$v -> wname}}
+					<a class="epe active" href="/">
+						万购商城已经上线啦
 					</a>
-					
-					@endforeach	
+				@foreach($article as $k=>$v)
+					<a class="ep" href="/home/article/{{$v->wid}}">
+						{{$v->wname}}
+					</a>
+				@endforeach	
 				</div>
-
-
+				
 				<div class="page text-right clearfix">
 					{{$article->links()}}
-
-					<style type="text/css">
-
-					.pagination li
-					{
-					color: #666;
-				    /*padding: 10px 15px;*/
-				    margin: 5px;
-				    line-height: 1em;
-				    /*border: 1px solid #999;*/
-				    display: inline-block;
-				    text-decoration: none;
-					}
-
-				    .pagination li.active
-				    {
-				    	color: #fff;
-					    border-color: #b31e22;
-					    background-color: #b31e22;
-					    padding: 10px 15px;
-					    margin: 5px;
-					    line-height: 1em;
-					    border: 1px solid #999;
-					    display: inline-block;
-					    text-decoration: none;
-				    }
-
-				    .pagination li.disabled
-				    {
-				    	color: #999;
-	    				border-color: #ccc;
-	    				padding: 10px 15px;
-					    margin: 5px;
-					    line-height: 1em;
-					    border: 1px solid #999;
-					    display: inline-block;
-					    text-decoration: none;
-    				}
-				</style>
-
 				</div>
+
+				
+
+				
+<style type="text/css">
+
+.pagination li
+{
+color: #666;
+/*padding: 10px 15px;*/
+margin: 5px;
+line-height: 1em;
+/*border: 1px solid #999;*/
+display: inline-block;
+text-decoration: none;
+}
+
+.pagination li.active
+{
+	color: #fff;
+    border-color: #b31e22;
+    background-color: #b31e22;
+    padding: 10px 15px;
+    margin: 5px;
+    line-height: 1em;
+    border: 1px solid #999;
+    display: inline-block;
+    text-decoration: none;
+}
+
+.pagination li.disabled
+{
+	color: #999;
+	border-color: #ccc;
+	padding: 10px 15px;
+    margin: 5px;
+    line-height: 1em;
+    border: 1px solid #999;
+    display: inline-block;
+    text-decoration: none;
+}
+</style>
+
+				
 				
 			</div>
 				
 			<div class="message-box pull-right">
 				<div class="head-div clearfix posr">
-					@foreach($article as $k=>$v)
-					<p>
-						{{$v -> wname}}
-
-						{{$v -> wtime}}
+				
+					<p align="center">
+						{{$articless->describe}}
 					</p>
-					@endforeach
+					<p align="right">
+						{!!date('Y-m-d H:i:s',$articless->wtime)!!}
+					</p>
+					
+				
 					<div class="title">
-						
 					</div>
 					<div class="time pull-right"></div>
 				</div>
 				<div class="html-code">
-					@foreach($article as $k=>$v)
-					<p>
-						{{$v -> content}}
+					
+					<p style="text-indent:2em;word-break:normal;" >
+						{{$articless->content}}
 					</p>
-					@endforeach
+					
 				</div>
 			</div>
 
@@ -139,8 +161,34 @@
 	
 @stop
 
-
 @section('js')
+
+	<script>
+		$('.ep').hover(function(){
+			$(this).attr('class','ep active');
+		},function(){
+			$(this).attr('class','ep');
+		});
+
+	</script>
 
 
 @stop
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

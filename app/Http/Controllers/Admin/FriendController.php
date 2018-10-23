@@ -19,6 +19,9 @@ class FriendController extends Controller
     	
     	$fname = $request->input('fname');
     	$rs = Friend::where('fname','like','%'.$fname.'%')->paginate($request->input('num',5));
+        if(!empty($fname)) {
+                $query->where('fname','like','%'.$fname.'%')->pagintate();
+            }
 
 		return view('admin.friend.index',[
 			'title'=>'友情链接浏览管理页面',
@@ -50,6 +53,16 @@ class FriendController extends Controller
      */
     public function store(Request $request)
     {
+         //1.表单验证
+        $this->validate($request, [
+             'fname' => 'required|regex:/[\x{4e00}-\x{9fa5}]+/u'
+            
+        ],[
+             'fname.required'=>'名称不能为空'
+            
+        ]);
+
+
     	$res = $request->except('_token');
     	$res['addtime'] = date(time());
     	$res['url'] = 'http://'.$res['url'];

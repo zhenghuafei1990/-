@@ -9,22 +9,40 @@ use DB;
 
 class ArticleController extends Controller
 {
-    public function index()
+    public function index(Request $request,$id)
     {
-    	
-		$article = DB::table('article')->paginate(10);
+
+       
+        $articless = Article::where('wid',$id)->first();
+
+		
+        $article = DB::table('article')->paginate(16);
+
+      
 
     	return view('home/article/article',[
-    		'title'=>'文章列表',
-    		'article'=>$article
+    		'title'=>'万购文章列表',
+            'article'=>$article,
+    		'articless'=>$articless,
     	]);
         
     }
-    public function title($id)
-    {
-    	$id = DB::table('article')->first();
-    	dd($id);	
-    	
-    }
+    
+    
 
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

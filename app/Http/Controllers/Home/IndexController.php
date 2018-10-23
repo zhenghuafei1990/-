@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 
 use App\Model\Admin\Cate;
 use App\Model\Admin\Poster;
+use App\Model\Admin\Article;
 use DB;
 
 class IndexController extends Controller
@@ -20,20 +21,21 @@ class IndexController extends Controller
 
     	$poster = Poster::get();
 
-        $ecommend = DB::table('goods')->get();
+        $ecommend =  DB::table('goods')->orderBy('stock','desc')->take(6)->get();
+
+        $articless = Article::get();
 
         $selling = DB::table('goods')->get();
         
         $rs = DB::table('lunbo')->orderBy('lid','desc')->take(6)->get();
-    	// $rs = DB::table('lunbo')->get();
-
     	return view('home.index',[
     		'title'=>'万购购物商城',
     		'poster'=>$poster,
     		'rs'=>$rs,
             'cates'=>$cates,
             'ecommend'=>$ecommend,
-            'selling'=>$selling
+            'selling'=>$selling,
+            'articless'=>$articless
     	]);
 
     }

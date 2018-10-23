@@ -37,7 +37,12 @@
 			</div>
 		</div>
 		@endforeach
-		<div id="dvs" style="display: none;position:absolute;margin-left:150px;z-index:10;width: 900px;background:#eee;padding: 15px">
+		<div id="dvs" style="display: none;position:absolute;margin-left:150px;z-index:10;width: 900px;background:#eee;padding: 15px;padding-top: 1px;border-radius:20px">
+
+			<div style="width:870px;">
+				<span id='spans' style='width:60px;margin-left:810px'>关闭视频</span>
+			</div>
+
 			<video id="video" width="870" controls="" preload="metadata" data-id="" src="" poster=""></video>
 		</div>
 	</div>
@@ -62,10 +67,19 @@
 
 	});
 
+	$('#spans').hover(function(){
 
-	$('#dvs').dblclick(function(){
+		$(this).css('cursor','pointer');
 
-		$(this).css('display','none');
+	},function(){
+		$(this).css('cursor','');
+
+	});
+
+
+	$('#spans').click(function(){
+
+		$(this).parent().parent().css('display','none');
 
 		$('#video').attr('src','');
 

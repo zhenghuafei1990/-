@@ -24,6 +24,10 @@ class LunboController extends Controller
         $lunname = $request->input('lunname');
         //获取数据
         $rs = Lunbo::where('lunname','like','%'.$lunname.'%')->paginate($request->input('num',5));
+        if(!empty($lunname)) {
+                $query->where('lunname','like','%'.$lunname.'%')->pagintate();
+            }
+        
 
     	
         return view('admin.lunbo.index',[
@@ -56,7 +60,16 @@ class LunboController extends Controller
      */
     public function store(Request $request)
     {
-         
+         //1.表单验证
+        $this->validate($request, [
+             'lunname' => 'required|regex:/[\x{4e00}-\x{9fa5}]+/u'
+            
+        ],[
+             'lunname.required'=>'名称不能为空'
+            
+        ]);
+
+
 
         $res = $request->except('_token');
 
