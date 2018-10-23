@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 
 use App\Model\Admin\Cate;
 use App\Model\Admin\Poster;
+use App\Model\Admin\Article;
 use DB;
 
 class IndexController extends Controller
@@ -22,6 +23,8 @@ class IndexController extends Controller
 
         $ecommend = DB::table('goods')->get();
 
+        $articless = Article::get();
+
         $selling = DB::table('goods')->get();
         
         $rs = DB::table('lunbo')->orderBy('lid','desc')->take(6)->get();
@@ -33,7 +36,8 @@ class IndexController extends Controller
     		'rs'=>$rs,
             'cates'=>$cates,
             'ecommend'=>$ecommend,
-            'selling'=>$selling
+            'selling'=>$selling,
+            'articless'=>$articless
     	]);
 
     }
