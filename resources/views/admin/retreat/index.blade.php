@@ -109,7 +109,7 @@
                             ￥{{$v->total}}
                         </td>
                          <td class=" ">
-                            @if($v->status == 0)退货订单
+                            @if($v->status == 0)申请退货中
                             @elseif($v->status == 1)退款完成
                             @endif
                         </td>

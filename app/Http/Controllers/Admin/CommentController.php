@@ -14,7 +14,7 @@ class CommentController extends Controller
     {
     	//从数据库查查询数据
     	// $comment = Comment::with('details')->get();
-        $uid = session('mid');
+        // $mid = session('mid');
 
     	$comment =  DB::table('detail')->orderBy('cid','desc')
     	->join('comment','detail.did','comment.did')

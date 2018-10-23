@@ -221,7 +221,7 @@
 		//获取id
 		var gid = $(this).parents('tr').find('.ches').attr('gid');
 
-		$.post('/homes/cart/remove',{gid:gid},function(data){
+		$.post('/home/cart/remove',{gid:gid},function(data){
 			if(data == '1'){
 
 				trs.parents('tr').remove();

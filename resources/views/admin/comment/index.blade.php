@@ -78,7 +78,7 @@
                     @foreach( $comment as $k=>$v )
                     <tr class="if($k % 2 == 0) :odd ?even">
                         <td class="  sorting_1" style='text-align:center'>
-                            {{$v->uid}}
+                            {{$v->mid}}
                         </td>
                         <td class=" ">
                             {{$v->content}}

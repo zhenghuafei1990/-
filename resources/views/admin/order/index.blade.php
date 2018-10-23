@@ -101,7 +101,7 @@
                             {{$v->oid}}
                         </td>
                         <td class=" ">
-                            {{$v->uid}}
+                            {{$v->mid}}
                         </td>
                         <td class=" ">
                             {{$v->oname}}

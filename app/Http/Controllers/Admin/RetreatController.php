@@ -27,7 +27,7 @@ class RetreatController extends Controller
 
         //获取数据
         $retreat = Retreat::where('town','like','%'.$town.'%')->orderBy('id','desc')
-        ->paginate($request->input('num',1));
+        ->paginate($request->input('num',5));
 
     	return view('/admin/retreat/index',[
     		'title'=>'退货管理页面',
@@ -36,11 +36,12 @@ class RetreatController extends Controller
     	]);
     }
 
-
+    //退货
     public function send($rid)
     {
+        $did = session('did');
     	Retreat::where('rid',$rid)->update([ 'status' => 1 ]);
-
+        Details::where('did',$did)->update([ 'status' => 1 ]);
         return back();
     }
 

@@ -39,7 +39,7 @@ class CommentController extends Controller
         $res = $request->except('_token');
         // dd($res);
         
-        $res['uid'] = session('mid');
+        $res['mid'] = session('mid');
 
         //获取gid
         $res['did'] = $did;
@@ -60,6 +60,7 @@ class CommentController extends Controller
             
         }
         // dd($res);
+        // gid  star  content  image 
         
 
         try{
@@ -73,35 +74,6 @@ class CommentController extends Controller
 
             return back();
 
-        }
-    }
-
-
-    /**
-    **查看评论
-    **/
-    public function index($did)
-    {
-        $comment = Comment::where('did',$did)->first();
-        $detail = Details::where('did',$did)->first();
-
-        return view('/home/comment/index',[
-            'title'=>'查看评价页面',
-            'detail'=>$detail,
-            'comment'=>$comment
-        ]);
-    }
-
-
-    public function delete($cid)
-    {
-        try{
-            $res = COmment::where('cid',$cid)->delete();
-            if($res){
-                return redirect('/home/orders');
-            }
-        }catch(\Exception $e){
-            return back();
         }
     }
 

@@ -69,12 +69,13 @@
                 <div class="tdf1">
                     <div class="ep2">
                         <a href="/home/comment/comments/{{$v->did}}" class="but c6">评价</a>
-                        <!-- <br> -->
-                        <!-- <a href="/home/comment/index/{{$v->did}}" class="but c6">查看评价</a> -->
                     </div>
                 </div>
                 <div class="tdf1">
+                    @if($v->status == 0)
                     <a href="/home/retreat/retreat/{{$v->did}}" class="but c6">申请退货</a>
+                    @else 退货完成
+                    @endif
                 </div>
             </div>
         </div>

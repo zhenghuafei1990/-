@@ -10,6 +10,7 @@ use App\Model\Admin\Details;
 use App\Model\Home\Cart;
 use App\Model\Home\Comment;
 use App\Model\Admin\Retreat;
+use App\Model\Admin\Goods;
 use DB;
 
 class OrdersController extends Controller
@@ -58,11 +59,11 @@ class OrdersController extends Controller
         return $count;
     }
 
-    //获取用户的uid
-    public function getUid()
+    //获取用户的mid
+    public function getMid()
     {
-      $uid = session('mid');
-      return $uid;
+      $mid = session('mid');
+      return $mid;
     }
 
 
@@ -90,6 +91,46 @@ class OrdersController extends Controller
         
         // 查询指定订单号的订单
         $rs = Orders::where('oid',$this->oid)->first();
+
+        //根据oid查询详情表
+        $detail = Details::where('oid',$this->oid)->get()->toArray();
+        // dd($detail);
+
+        // 获取详情表里的gid
+         $arr = [];
+        foreach($detail as $k=>$v){
+         $arr[] = $v['gid'];
+        }
+        // dd($arr);
+
+        //获取详情表里的数量
+        $count = [];
+        foreach($detail as $k=>$v){
+          $count[] = $v['count'];
+        }
+        // dd($count);
+
+        //获取上面平里的库存
+        $kucun = [];
+        foreach($arr as $k=>$v){
+          $kucun[] = Goods::where('id',$v)->first()->stock;
+        }
+        // dd($kucun);
+
+        //减去库存
+        $stock = [];
+        foreach($kucun as $k=>$v){
+          $stock[] = $kucun[$k]-$count[$k];
+        }
+        // dd($stock);
+
+        //把库存存回商品表
+        $c=array_combine($arr,$stock);
+        // dd($c);
+        foreach ($c as $k => $v) {
+           Goods::where('id',$k)->update([ 'stock' => $v ]);
+        }
+
 
         // 清空购物车数据库
         $this->clearCart();
@@ -131,7 +172,7 @@ class OrdersController extends Controller
         $data = [
             'addtime' => date('Y-m-d H:i:s'),
             'oid'=> $this->oid,
-            'uid'=>$this->getUid(),
+            'mid'=>$this->getMid(),
             'oname'=> $request->input('oname'),
             'address'=> $request->input('address'),
             'phone'=> $request->input('phone'),
@@ -183,14 +224,25 @@ class OrdersController extends Controller
      */
     public function index(Request $request)
     {
-      $uid = session('mid');
-
+      $mid = session('mid');
+      $did = session('did');
+      $oid = session('oid');
+      // dd($oid);
       //从数据库获取数据
-      $order = Orders::where('uid',$uid)->orderBy('id','desc')->paginate(2);
+
+      $detail = Details::where('oid',$oid)->orderBy('status','asc')->first();
+       if($detail['status'] == 1){
+        Orders::where('oid',$oid)->update(['status'=>3]);
+       } 
+
+      $order = Orders::where('mid',$mid)->orderBy('id','desc')->paginate(2);
+      
+       
         
       return view('/home/order/index',[
           'title'=>'我的订单',
-          'order'=>$order
+          'order'=>$order,
+          'detail'=>$detail
       ]);
 
     }

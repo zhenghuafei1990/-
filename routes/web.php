@@ -159,6 +159,9 @@ Route::group(['middleware' => 'checklogin'],function(){
 	Route::any('home/usershome/upload/{id}','Home\UsershomeController@upload');
 	Route::any('home/usershome/delete/{id}','Home\UsershomeController@delete');
 
+	//加入购物车
+	Route::any('/home/cart/create/{id}','Home\CartController@create');
+
 	//前台购物车管理
 	Route::any('/home/cart','Home\CartController@index');
 
@@ -189,12 +192,6 @@ Route::group(['middleware' => 'checklogin'],function(){
 
 	//添加评论
 	Route::any('/home/comment/create/{id}','Home\CommentController@create');
-
-	//查看评论
-	Route::any('/home/comment/index/{id}','Home\CommentController@index');
-
-	//删除评论
-	Route::any('/home/comment/delete/{id}','Home\CommentController@delete');
 
 	//申请退货
 	Route::any('/home/retreat/retreat/{id}','Home\RetreatController@retreat');

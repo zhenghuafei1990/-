@@ -102,7 +102,6 @@ class OrdersController extends Controller
      */
     public function edit($id)
     {
-        //根据uid获取数据
         $res =\DB::table('orders')->where('id',$id)->first();
 
         return view('/admin/order/edit',[
@@ -144,7 +143,7 @@ class OrdersController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($uid)
+    public function destroy()
     {
 
     }

@@ -22,7 +22,7 @@
         </div>
         @endforeach
         <form action="/home/retreat/create/{{$v->did}}" method='post' class="user-addr__form form-horizontal" role="form">
-            <div class="form-group" style='position:absolute;top:350px;left:470px;width:500px'>
+            <div class="form-group">
                 <label class="col-sm-2 control-label">
                     退款金额：
                 </label>
@@ -32,7 +32,7 @@
                     </div>
                 </div>
             </div>
-            <div class="form-group" style='position:absolute;top:400px;left:470px;width:500px'>
+            <div class="form-group">
                 <label for="cause" class="col-sm-2 control-label">
                     退款原因：
                 </label>
@@ -53,7 +53,7 @@
                     </select>
                 </div> 
             </div>
-            <div class="form-group" style='position:absolute;top:460px;left:470px;width:500px'>
+            <div class="form-group">
                 <label for="note" class="col-sm-2 control-label">
                     退款说明：
                 </label>
@@ -61,7 +61,7 @@
                     <input type="text" name="content" style='width:450px;' maxlength='25' placeholder="请输入您对该商品的评价~">
                 </div>
             </div>
-            <div class="form-group" style='position:absolute;top:570px;left:380px;width:500px'>
+            <div class="form-group">
                 <div class="col-sm-offset-2 col-sm-3">
                     {{csrf_field()}}
                     <button type="submit" class="but">
