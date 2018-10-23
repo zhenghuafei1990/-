@@ -213,6 +213,8 @@ Route::group(['middleware' => 'checklogin'],function(){
 	//前台商品详情页
 	Route::any('/home/goods/details/{id}','Home\GoodsController@details');
 
+	//前台商品搜索
+	Route::any('/home/goods/search','Home\GoodsController@search');
 	//前台商品主类别列表页
 	Route::any('/home/goods/floor/{id}','Home\GoodsController@floor');
 	//前台商品主类详情页
@@ -221,8 +223,6 @@ Route::group(['middleware' => 'checklogin'],function(){
 	Route::any('/home/video','Home\VideoController@index');
 	Route::any('/home/video/select','Home\VideoController@select');
 	Route::any('/home/video/remove','Home\VideoController@remove');
-
-
 });
 
 

@@ -161,7 +161,7 @@
 						@foreach($ecommend as $k=>$v)
 						<a href="/home/ecommend/{{$v->id}}" class="floor-item">
 							<div class="item-img hot-img">
-								<img src="{{$v->picture}}" alt="纯色圆领短袖T恤活a动衫弹" class="cover">
+								<img src="/{{$v->picture}}" alt="纯色圆领短袖T恤活a动衫弹" class="cover">
 							</div>
 					
 						
@@ -224,6 +224,10 @@
 		</section>
 		
 		@foreach($cates as $k=>$v)
+		@php 
+			$arr_tid=DB::table('type')->where('path','like',"%,$v->tid,%")->pluck('tid');
+			$rs = DB::table('goods')->whereIn('tid',$arr_tid)->orderBy('stock','asc')->take(8)->get();
+		@endphp	
 		<section class="scroll-floor floor-{{mt_rand(1,6)}}">
 			<div class="floor-title">
 				<i class="iconfont icon-skirt fz16"></i> {{$v->tname}}
@@ -238,17 +242,18 @@
 					<img src="/home/images/floor_2.jpg" alt="" class="cover">
 				</a>
 				<div class="right-box">
-					<a href="item_show.html" class="floor-item">
+					@foreach($rs as $kk=>$vv)
+					<a href="/home/goods/details/{{$vv->id}}" class="floor-item">
 						<div class="item-img hot-img">
-							<img src="/home/images/temp/S-001.jpg" alt="纯色圆领短袖T恤活a动衫弹" class="cover">
+							<img src="/{{$vv->picture}}" alt="{{$vv->gname}}" class="cover">
 						</div>
 						<div class="price clearfix">
-							<span class="pull-left cr fz16">￥18.0</span>
-							<span class="pull-right c6">进货价</span>
+							<span class="pull-left cr fz16">￥{{$vv->price}}</span>
+							<span class="pull-right c6">双十一价</span>
 						</div>
-						<div class="name ep" title="纯色圆领短袖T恤活a动衫弹力柔软">纯色圆领短袖T恤活a动衫弹力柔软</div>
+						<div class="name ep" title="纯色圆领短袖T恤活a动衫弹力柔软">{{$vv->gname}}</div>
 					</a>
-					
+					@endforeach
 				</div>
 			</div>
 		</section>

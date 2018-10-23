@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use DB;
 use App\Model\Admin\Cate;
+use App\Model\Admin\Goods;
+
 class GoodsController extends Controller
 {
     //前台商品列表页
@@ -39,7 +41,7 @@ class GoodsController extends Controller
     public function floor($id)
     {
         $arr_tid = DB::table('type')->where('path','like',"%,$id,%")->pluck('tid');
-        $rs=DB::table('goods')->whereIn('tid',$arr_tid)->paginate(20);
+        $rs = DB::table('goods')->whereIn('tid',$arr_tid)->paginate(20);
         $res = DB::table('goods')->orderBy('stock','asc')->take(10)->get();
         //dd($rs);
         return view('/home/goods/list_floor',[
@@ -62,5 +64,19 @@ class GoodsController extends Controller
             'res'=>$res,
             'gpic'=>$gpic
         ]);
+    }
+
+    //前台商品搜索
+    public function search(Request $request)
+    {
+    	$name = $request->input('gname');
+    	$rs = Goods::where('gname','like','%'.$name.'%')->paginate(20);
+    	$res = DB::table('goods')->orderBy('stock','desc')->take(10)->get();
+    	
+    	return view('/home/goods/list',[
+    		'title'=>'商品列表页',
+    		'rs'=>$rs,
+    		'res'=>$res 
+    	]);
     }
 }
