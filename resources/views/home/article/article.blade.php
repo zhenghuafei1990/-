@@ -30,11 +30,11 @@
 			<div class="pull-left">
 				<div class="msg-list">
 					<a class="epe active" href="/">
-						万购商城已经上线啦
+						【新闻】万购商城已经上线啦
 					</a>
 				@foreach($article as $k=>$v)
 					<a class="ep" href="/home/article/{{$v->wid}}">
-						{{$v->wname}}
+						【新闻】{{$v->wname}}
 					</a>
 				@endforeach	
 				</div>
@@ -92,10 +92,10 @@ text-decoration: none;
 			<div class="message-box pull-right">
 				<div class="head-div clearfix posr">
 				
-					<p align="center">
+					<p align="center" style="font-size: 20px">
 						{{$articless->describe}}
 					</p>
-					<p align="right">
+					<p align="right" style="font-size: 15px">
 						{!!date('Y-m-d H:i:s',$articless->wtime)!!}
 					</p>
 					
@@ -106,7 +106,7 @@ text-decoration: none;
 				</div>
 				<div class="html-code">
 					
-					<p style="text-indent:2em;word-break:normal;" >
+					<p style="text-indent:2em;word-break:normal;font-size: 25px" >
 						{{$articless->content}}
 					</p>
 					

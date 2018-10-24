@@ -53,10 +53,10 @@
 			<div class="user-info__box">
 				<div class="login-box">
 					<div class="avt-port">
-						<img src="/home/images/icons/default_avt.png" alt="欢迎来到U袋网" class="cover b-r50">
+						<img src="@if($message){{$message->header}} @else /logo/logo.png @endif" alt="欢迎来到U袋网" class="cover b-r50">
 					</div>
 					<!-- 已登录 -->
-					<div class="name c6">Hi~ <span class="cr">18759808122</span></div>
+					<div class="name c6">Hi~ <span class="cr">@if($message){{$message->mname}}@endif</span></div>
 					<div class="point c6">积分: 30</div>
 
 					<!-- 未登录 -->
@@ -187,7 +187,7 @@
 							<div class="swiper-wrapper">
 								@foreach($articless as $k=>$v)
 								<a class="swiper-slide ep" href="/home/article/{{$v['wid']}}">
-									{{$v['wname']}}
+									【新闻】{{$v['wname']}}
 								</a>
 								@endforeach
 							</div>

@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Home;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Http\Requests\ArticleRequest;
+
 use App\Model\Admin\Article;
 use DB;
 
