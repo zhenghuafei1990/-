@@ -8,7 +8,11 @@
 
 <div class="mws-panel grid_8">
 	<div class="mws-panel-header">
-    	<span>{{$title}}</span>
+    	<span>
+        <i class="icon-table">
+        </i>
+        {{$title}}
+    </span>
     </div>
     <div class="mws-panel-body no-padding">
 

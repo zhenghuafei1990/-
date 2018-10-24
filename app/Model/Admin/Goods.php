@@ -24,4 +24,10 @@ class Goods extends Model
     {
         return $this->hasMany('App\Model\Admin\Goodsimg','gid');
     }
+
+    //关联商品评论表
+    public function comments()
+    {
+        return $this->hasMany(\App\Model\Home\Comment::class,'gid');
+    }
 }

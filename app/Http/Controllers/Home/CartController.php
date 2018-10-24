@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Home;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use App\Model\Admin\Goods;
+use App\Model\Home\Cart;
 use DB;
 
 class CartController extends Controller
@@ -12,7 +14,7 @@ class CartController extends Controller
     {
         $gid = $request->gid;
 
-        $data = DB::table('cart')->where('id',$gid)->delete();
+        $data = DB::table('cart')->where('gid',$gid)->delete();
 
         if($data){
             echo 1;
@@ -27,9 +29,10 @@ class CartController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $rs = DB::table('cart')->get();
-        
+    {   
+        $mid = session('mid');
+        $rs = Cart::where('mid',$mid)->get();
+
         return view('/home/cart/index',[
             'title'=>'购物车管理',
             'rs'=>$rs
@@ -41,9 +44,33 @@ class CartController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
-        //
+        $cart = [];
+        $cart['name'] = Goods::where('id',$id)->first()->gname;
+        $cart['price'] = Goods::where('id',$id)->first()->price;
+        $cart['gimg'] = Goods::where('id',$id)->first()->picture;
+        $cart['mid'] = session('mid');
+        $cart['gid'] = $id;
+        // dd($cart);
+         
+        try{
+           $rs = Cart::create($cart);
+
+            if($rs){
+                return redirect('/home/cart');
+            }
+
+        }catch(\Exception $e){
+
+            return back();
+
+        }
+
+
+
+
+
     }
 
     /**
@@ -100,6 +127,6 @@ class CartController extends Controller
      */
     public function destroy($gid)
     {
-        echo $gid;
+        
     }
 }

@@ -23,15 +23,6 @@ class VideoController extends Controller
 
     	$re = Video::where('id',$request->id)->first();
 
-    	// session(['reid'=>$re->id]);
-    	// session(['re'=>$re->url]);
-
     	return response()->json($re);
-    }
-
-    public function remove(Request $request)
-    {
-    	
-
     }
 }
