@@ -77,11 +77,6 @@
                         </th>
                         <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
                         rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending"
-                        style="width: 150px;">
-                            地址
-                        </th>
-                        <th class="sorting" role="columnheader" tabindex="0" aria-controls="DataTables_Table_1"
-                        rowspan="1" colspan="1" aria-label="CSS grade: activate to sort column ascending"
                         style="width: 70px;">
                             电话
                         </th>
@@ -116,9 +111,7 @@
                         <td class="">
                             @if($v->sex == 0) 女 @elseif($v->sex == 1) 男 @else 保密 @endif
                         </td>
-                        <td class="">
-                            {{$v->addr}}
-                        </td>
+                        
                         <td class="">
                             {{$v->phone}}
                         </td>

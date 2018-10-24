@@ -35,7 +35,7 @@
 	<form action="/home/usershome/indexupload/{{$rs->mid}}" method="post" enctype='multipart/form-data' class="user-setting__form" style="margin-left: 280px">
 
 		<div class="img b-r50" data-original-title="" title="">
-			<img src="{{$rs->header}}" style="width: 100px;height: 100px;border-radius: 50%" class="cover">
+			<img src="@if($rs->header){{$rs->header}} @else /logo/logo.png @endif" style="width: 100px;height: 100px;border-radius: 50%" class="cover">
 		</div>
 		<div class="mws-form-row">
                     <label class="mws-form-label">头像上传:</label>
