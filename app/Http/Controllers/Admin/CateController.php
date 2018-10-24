@@ -142,6 +142,10 @@ class CateController extends Controller
      */
     public function destroy($id)
     {
+        $cate=Cate::where('pid','=',$id)->first();
+        if($cate){
+            return back()->with('error','有子类，不能删');
+        }
        try{
             $res = Cate::where('tid',$id)->delete();
             if($res){
