@@ -104,6 +104,13 @@ Route::group(['middleware'=>'adminlogin'],function(){
 	Route::any('home/dologin','Home\LoginController@dologin');
 	Route::any('home/empty','Home\LoginController@empty');
 
+	//前台忘记密码
+	Route::any('home/setlogin','Home\SetloginController@index');
+	Route::any('home/dosetlogin','Home\SetloginController@dosetlogin');
+	Route::any('home/set','Home\SetloginController@set');
+	Route::any('home/setpass','Home\SetloginController@setpass');
+
+
 	//前台注册
 	Route::any('home/message','Home\MessageController@index');
 	Route::any('home/message/create','Home\MessageController@create');
