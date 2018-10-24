@@ -51,9 +51,6 @@
                                 <div class="name ep" style="width: 180px">
                                     {{$v->name}}
                                 </div>
-                                <div class="c9 ep">
-                                    {{$v->type}}
-                                </div>
                             </td>
                             <td>
                                 {{$v->addtime}}
@@ -62,7 +59,7 @@
                                 ¥{{$v->total}}
                             </td>
                             <td class="refund-state">
-                                @if($v->status == 0)退货订单
+                                @if($v->status == 0)申请退货中
                                 @elseif($v->status == 1)退款完成
                                 @endif
                             </td>

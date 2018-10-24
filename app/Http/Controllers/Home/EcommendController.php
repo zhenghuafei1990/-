@@ -11,14 +11,25 @@ class EcommendController extends Controller
     {
         $ecommend = DB::table('goods')->where('id',$id)->first();
         $spicture = DB::table('goodspicture')->where('gid',$id)->get();
-    	$stock = DB::table('goods')->orderBy('stock','asc')->take(6)->get();
+    	$stock = DB::table('goods')->orderBy('stock','desc')->take(6)->get();
         // dd($ecommend);
-  	
+        
+        $comment = DB::table('goods')->join('comment','comment.gid','goods.id')
+            ->where(function($query)use($id){
+            $query->where('gid',$id);
+        })->orderBy('cid','desc')->paginate(20);
+
+        $mid = session('mid');
+        $message = DB::table('message')->where('mid',$mid)->first();
+
+
         return view('home.ecommend.index',[
         	'title'=>'爆款推荐',
         	'ecommend'=>$ecommend,
             'spicture'=>$spicture ,
-            'stock'=>$stock
+            'stock'=>$stock,
+            'comment'=>$comment,
+            'message'=>$message
         	
         ]);
     }

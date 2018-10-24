@@ -8,7 +8,7 @@
                     	<span><i class="icon-ok"></i>{{$title}}</span>
                     </div>
                     <div class="mws-panel-body no-padding">
-                    	<form id="mws-validate" class="mws-form" action="/admin/orders/{{$res->uid}}" method='post' novalidate="novalidate">
+                    	<form id="mws-validate" class="mws-form" action="/admin/orders/{{$res->id}}" method='post' novalidate="novalidate">
                         	<div id="mws-validate-error" class="mws-form-message error" style="display:none;"></div>
                         	<div class="mws-form-inline">
                         		<div class="mws-form-row">

@@ -35,31 +35,21 @@
                         </span>
                         <span class="c6 fz20">
                             {{$v->count}}
-
-
-                        </span>
-                    </div>
-                    <div class="param-row">
-                        <span class="param-label">
-                            类型
-                        </span>
-                        <span class="c6 fz20">
-                            {{$v->type}}
                         </span>
                     </div>
                 </div>
             </div>
         </div>
-    
+    @endforeach
     <p class="fz18 cr">
         商品评价
     </p>
     <div class="modify_div">
         <form action="/home/comment/create/{{$v->did}}" method='post' class="evaluate-form__box" enctype='multipart/form-data'>
-            @endforeach
             <span class="help-block">
                 快评论一番，让其他买家开开眼
             </span>
+            <input type="hidden" name="gid" value='{{$v->gid}}'>
             <table class="table table-bordered">
                 <tr>
                     <th scope="row">
@@ -107,8 +97,6 @@
                 </button>
             </div>  
         </form>
-
-
     </div>
 </div>
 @stop

@@ -33,7 +33,6 @@
 								</th>
 								<td>
 									<div class="name ep3">{{$v->name}}</div>
-									<div class="type c9">颜色分类：{{$v->color}}  尺码：{{$v->size}}</div>
 								</td>
 								<td>￥<span class='price'>{{$v->price}}</span></td>
 								<td>
@@ -222,7 +221,7 @@
 		//获取id
 		var gid = $(this).parents('tr').find('.ches').attr('gid');
 
-		$.post('/homes/cart/remove',{gid:gid},function(data){
+		$.post('/home/cart/remove',{gid:gid},function(data){
 			if(data == '1'){
 
 				trs.parents('tr').remove();
@@ -325,8 +324,6 @@ $(function(){
 			img: tr.find('.cover').attr('src'),
 			// 获取商品名称
 			name: tr.find('.name').text(),
-			// 获取商品颜色
-			type: tr.find('.type').text(),
 			// 获取商品数量
 			count :tr.find('.cart-num__box .val').val(),
 			// 获取商品小计

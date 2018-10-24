@@ -32,11 +32,14 @@ class RetreatController extends Controller
     	$retreat['rid'] = date('YmdHis').mt_rand(1000,9999);
     	$retreat['oid'] = DB::table('detail')->where('did',$did)->value('oid');
     	$retreat['name'] = DB::table('detail')->where('did',$did)->value('name');
-    	$retreat['type'] = DB::table('detail')->where('did',$did)->value('type');
     	$retreat['total'] = DB::table('detail')->where('did',$did)->value('dollar');
     	$mid = session('mid');
-    	$retreat['mid'] = $mid;
-    	// dd($retreat);
+        $retreat['mid'] = $mid;
+        // dd($retreat);
+        //把did存入session
+        session(['did'=>$did]);
+        session(['oid'=>$retreat['oid']]);
+
 
         try{
             $rs = retreat::create($retreat);
@@ -52,7 +55,7 @@ class RetreatController extends Controller
     {
     	$mid = session('mid');
 
-		$retreat = Retreat::where('mid',$mid)->OrderBy('id','desc')->paginate(1);
+		$retreat = Retreat::where('mid',$mid)->OrderBy('id','desc')->paginate(4);
         // dd($retreat);
 		
     	return view('/home/retreat/index',[

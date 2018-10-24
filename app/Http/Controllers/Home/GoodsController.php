@@ -7,6 +7,8 @@ use App\Http\Controllers\Controller;
 use DB;
 use App\Model\Admin\Cate;
 use App\Model\Admin\Goods;
+use App\Model\Home\Comment;
+
 
 class GoodsController extends Controller
 {
@@ -29,12 +31,26 @@ class GoodsController extends Controller
     	$rs = (DB::table('goods')->where('id',$id)->get())[0];
     	$res = DB::table('goods')->orderBy('stock','asc')->take(10)->get();
         $gpic = DB::table('goodspicture')->where('gid',$id)->get()->toArray();
-        //dd($rs);
+
+        // $comment = Goods::with(['comments'=>function($query){
+        //     $query->orderBy('addtime','desc');
+        // }])->find($id)->paginate(2);
+        $comment = DB::table('goods')->join('comment','comment.gid','goods.id')
+            ->where(function($query)use($id){
+            $query->where('gid',$id);
+        })->orderBy('cid','desc')->paginate(20);
+
+        $mid = session('mid');
+        $message = DB::table('message')->where('mid',$mid)->first();
+
+
     	return view('/home/goods/details',[
     		'title'=>'商品详情页',
     		'rs'=>$rs,
     		'res'=>$res,
-            'gpic'=>$gpic
+            'gpic'=>$gpic,
+            'comment'=>$comment,
+            'message'=>$message
     	]);
     }
     //前台楼层商品列表页

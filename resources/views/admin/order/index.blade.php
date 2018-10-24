@@ -4,12 +4,6 @@
 
 @section('content')
 
-    @if(session('success'))
-    <div class="mws-form-message info">
-        {{session('success')}}                 
-    </div>
-    @endif
-
       <div class="mws-panel grid_8">
     <div class="mws-panel-header">
         <span>
@@ -21,10 +15,31 @@
     <div class="mws-panel-body no-padding">
         <div id="DataTables_Table_1_wrapper" class="dataTables_wrapper" role="grid">
             <form action='/admin/orders' method='get'>
+            <div id="DataTables_Table_1_length" class="dataTables_length">
+                <label>
+                    显示
+                    <select size="1" name="num" aria-controls="DataTables_Table_1">
+                        <option value="5" @if($request->num == '5') selected="selected" @endif>
+                            5
+                        </option>
+                        <option value="10" @if($request->num == '10') selected="selected" @endif>
+                            10
+                        </option>
+                        <option value="15" @if($request->num == '15') selected="selected" @endif>
+                            15
+                        </option>
+                    </select>
+                    条数据
+                </label>
+            </div>
             <div class="dataTables_filter" id="DataTables_Table_1_filter">
                 <label>
                     收货人:
                     <input aria-controls="DataTables_Table_1"  name='oname' type="text">
+                </label>
+                <label>
+                    收货地址:
+                    <input aria-controls="DataTables_Table_1"  name='address' type="text">
                 </label>
                 <button class='btn btn-info'>搜索</button>
             </div>
@@ -86,7 +101,7 @@
                             {{$v->oid}}
                         </td>
                         <td class=" ">
-                            {{$v->uid}}
+                            {{$v->mid}}
                         </td>
                         <td class=" ">
                             {{$v->oname}}
@@ -121,7 +136,7 @@
                             @endif
                         </td>
                         <td class=" ">
-                            <a class='btn btn-primary' href="/admin/orders/{{$v->oid}}/edit">修改</a>
+                            <a class='btn btn-primary' href="/admin/orders/{{$v->id}}/edit">修改</a>
                             <a class='btn btn-primary' href="/admin/orders/{{$v->oid}}">详情</a>
                             @if($v->status == 0)
                             <a class='btn btn-primary' href="/admin/orders/send/{{$v->oid}}" style='display:inline'>发货</a>
