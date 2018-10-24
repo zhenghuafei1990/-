@@ -41,9 +41,7 @@ class UsershomeController extends Controller
 
         $rs = Message::where('mid',$id)->first();
 
-        if($rs->mname == $res['mname']){
-            return redirect('/home/usershome')->with('error','修改失败');
-        }
+        
 
         $head = $rs->header; 
 

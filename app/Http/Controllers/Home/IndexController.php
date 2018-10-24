@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use App\Model\Admin\Cate;
 use App\Model\Admin\Poster;
 use App\Model\Admin\Article;
+use App\Model\Admin\Message;
 use DB;
 
 class IndexController extends Controller
@@ -17,9 +18,12 @@ class IndexController extends Controller
     {
 
         $cates = Cate::getCatesubs();
-        //dd($cates);
 
     	$poster = Poster::get();
+
+        $mid = session('mid');
+
+        $message = Message::where('mid',$mid)->first();
 
         $ecommend =  DB::table('goods')->orderBy('stock','desc')->take(6)->get();
 
@@ -35,7 +39,8 @@ class IndexController extends Controller
             'cates'=>$cates,
             'ecommend'=>$ecommend,
             'selling'=>$selling,
-            'articless'=>$articless
+            'articless'=>$articless,
+            'message'=>$message
     	]);
 
     }
