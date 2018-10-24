@@ -139,8 +139,20 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(UserRequest $request, $id)
+    public function update(Request $request, $id)
     {
+    	//表单验证
+    	$this->validate($request, [
+			'username' => 'required|regex:/^\w{4,12}$/',
+            'password' => 'required|regex:/^\S{4,12}$/',
+            'repass'   => 'same:password', 
+        ],[
+            'username.required' => '用户名称不能为空',
+            'password.required'  => '用户密码不能为空',
+            'username.regex'  => '用户名称格式不正确',
+            'password.regex'  => '用户密码格式不正确',
+            'repass.same'   =>'两次密码不一致',
+        ]);
         //获取数据
         $img =DB::table('users')->where('uid',$id)->get();
        //?unlink怎么删除
