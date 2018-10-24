@@ -294,7 +294,7 @@
 			</li>
 			<li class="r-toolbar-item">
 				<a href="/home/cart" class="r-item-hd">
-					<i class="iconfont icon-cart" data-badge="10"></i>
+					<i class="iconfont icon-cart"></i>
 					<div class="r-tip__box"><span class="r-tip-text">购物车</span></div>
 				</a>
 			</li>

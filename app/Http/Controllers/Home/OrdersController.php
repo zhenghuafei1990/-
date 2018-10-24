@@ -69,12 +69,13 @@ class OrdersController extends Controller
 
     public function getinfo(Request $request)
     {
+      $mid = session('mid');
         
-        $cargood = DB::table('cargood')->get();
+        $cargood = DB::table('cargood')->where('mid',$mid)->get();
 
         return view('/home/order/getinfo', [
             'title' => '结算中心',
-            'cargood' => $cargood,
+            'cargood' => $cargood
         ]);
     }
 

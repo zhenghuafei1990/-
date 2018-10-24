@@ -28,7 +28,7 @@
 
 									<label class="checked-label"><input type="checkbox" class='ches' gid='{{$v->gid}}'><i></i>
 
-										<div class="img"><img src="{{$v->gimg}}" alt="" class="cover"></div>
+										<div class="img"><img src="/{{$v->gimg}}" alt="" class="cover"></div>
 									</label>
 								</th>
 								<td>
