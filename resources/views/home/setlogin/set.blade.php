@@ -39,52 +39,46 @@
 	{{session('error')}}
 </div>
 @endif				
-					<h2>欢迎登录万购网平台</h2>
+					<h2>请输入用户名和手机号进行验证</h2>
 				</div>
 				<div class="tabs_container">
-					<form class="tabs_form" action="/home/dologin" method="post" id="login_form">
+					<form class="tabs_form" action="/home/setpass" method="post" id="login_form">
 						<div class="form-group">
 							<div class="input-group">
 								<div class="input-group-addon">
 									<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
 								</div>
-								<input class="form-control phone" name="mname" id="login_phone" required placeholder="用户名" maxlength="11" autocomplete="off" type="text">
+								<input class="form-control phone" name="mname" id="login_phone" required placeholder="用户名" readonly="readonly" value="@if(session('mnames')) {{session('mnames')}} @endif" autocomplete="off" type="text">
 							</div>
 						</div>
+
 						<div class="form-group">
 							<div class="input-group">
 								<div class="input-group-addon">
-									<span class="glyphicon glyphicon-lock" aria-hidden="true"></span>
+									<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
 								</div>
-								<input class="form-control password" name="password" id="login_pwd" placeholder="请输入密码" autocomplete="off" type="password">
-								<div class="input-group-addon pwd-toggle" title="显示密码"><span class="glyphicon glyphicon-eye-open" aria-hidden="true"></span></div>
+								<input class="form-control phone" name="password" id="login_phone" required placeholder="请输入新密码" autocomplete="off" type="text">
 							</div>
 						</div>
-						<div class="input-group">
-								<input class="form-control" name="smscode" id="register_sms" placeholder="输入验证码" type="text">
-								<span class="input-group-btn">
-						<img src="{{captcha_src()}}" onclick="this.src+=Math.random()" title="点击刷新验证码">
-								
-								</span>
-							</div>
+
 						<div class="checkbox">
 	         
-	                        <a href="/home/setlogin" class="pull-right" id="resetpwd">忘记密码？</a>
+	                        <a href="/home/login" class="pull-right" id="resetpwd">返回登录</a>
+	                    </div>
+						
+						
+						<div class="checkbox">
+	         
 	                    </div>
 	                    <!-- 错误信息 -->
 						<div class="form-group">
 							<div class="error_msg" id="login_error">
-								<!-- 错误信息 范例html
-								<div class="alert alert-warning alert-dismissible fade in" role="alert">
-									<button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-									<strong>密码错误</strong> 请重新输入密码
-								</div>
-								 -->
+								
 							</div>
 						</div>
 						{{csrf_field()}}
 						{{method_field('PUT')}}
-	                    <button type="submit" class="btn btn-large btn-primary btn-lg btn-block submit" id="login_submit">登录</button><br>
+	                    <button type="submit" class="btn btn-large btn-primary btn-lg btn-block submit" id="login_submit">修改</button><br>
 	                    <p class="text-center">没有账号？<a href="/home/message">免费注册</a></p>
                     </form>
                     <div class="tabs_div">

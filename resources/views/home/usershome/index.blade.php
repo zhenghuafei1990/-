@@ -55,8 +55,8 @@
 		</div>
 		<div class="user-form-group">
 			<label>性别&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;:</label>
-			<label><input type="radio" name="sex" value="0" @if($rs->sex == 1)checked="checked" @endif><i class="iconfont icon-radio"></i> 男士</label>
-			<label><input type="radio" name="sex" value="1" @if($rs->sex == 0)checked="checked" @endif><i class="iconfont icon-radio"></i> 女士</label>
+			<label><input type="radio" name="sex" value="1" @if($rs->sex == 1)checked="checked" @endif><i class="iconfont icon-radio"></i> 男士</label>
+			<label><input type="radio" name="sex" value="0" @if($rs->sex == 0)checked="checked" @endif><i class="iconfont icon-radio"></i> 女士</label>
 			<label><input type="radio" name="sex" value="2" @if($rs->sex == 2)checked="checked" @endif><i class="iconfont icon-radio"></i> 保密</label>
 		</div>
 
