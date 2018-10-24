@@ -110,7 +110,7 @@ class UsershomeController extends Controller
         $res = Usershome::where('mid',$mid)->orderBy('status','desc')->first();
         
         //判断是否有默认地址
-        if(!empty($data['status']) && $res->status == '0'){
+        if(!empty($data->status) || $res->status == '0'){
             $data['status'] = '1';
         } else {
             $data['status'] = '0';
