@@ -82,19 +82,13 @@
                                 	@if($v->status == 0)新订单
                                 	@elseif($v->status == 1)已发货<br><a href="/home/order/finish/{{$v->oid}}">确认收货</a>
                                 	@elseif($v->status == 2)完成订单
-                                	@elseif($v->status == 3)无效订单
-                                	@endif
+                                    @elseif($v->status == 3)无效订单
+                                    @endif
                                 </td>
                                 <td class="order">
                                 	<a href="/home/order/{{$v->oid}}" class="but c6">
                                         订单详情
                                     </a>
-                                    @if($v->status !=2)
-                                    <a href="/home/order/invalid/{{$v->oid}}" class="but c6">
-
-                                        取消订单
-                                    </a>
-                                    @endif
                                 </td>
                             </tr>
                             @endforeach

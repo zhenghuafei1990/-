@@ -15,10 +15,6 @@ class RetreatController extends Controller
 
     public function index(Request $request)
     {	
-
-    	// $retreat = DB::table('retreat')->paginate(1);
-    	// dd($retreat);
-
     	//单条件查询
         $town = '';
         if( $request->input('town') =='质量问题'){
@@ -31,22 +27,21 @@ class RetreatController extends Controller
 
         //获取数据
         $retreat = Retreat::where('town','like','%'.$town.'%')->orderBy('id','desc')
-        ->paginate($request->input('num',1));
-        // dd($retreat);
-
-
+        ->paginate($request->input('num',5));
 
     	return view('/admin/retreat/index',[
     		'title'=>'退货管理页面',
-    		'retreat'=>$retreat
+    		'retreat'=>$retreat,
+            'request'=>$request
     	]);
     }
 
-
+    //退货
     public function send($rid)
     {
+        $did = session('did');
     	Retreat::where('rid',$rid)->update([ 'status' => 1 ]);
-
+        Details::where('did',$did)->update([ 'status' => 1 ]);
         return back();
     }
 

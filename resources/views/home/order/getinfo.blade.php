@@ -43,7 +43,6 @@
 									<th scope="row"><a href="item_show.html"><div class="img"><img src="{{$v['img']}}" alt="" class="cover"></div></a></th>
 									<td>
 										<div class="name ep3">{{$v['name']}}</div>
-										<div class="type c9">颜色分类：{{$v['type']}}</div>
 									</td>
 									<td>{{$v['count']}}</td>
 									<td>¥0.0</td>
