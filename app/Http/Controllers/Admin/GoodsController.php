@@ -210,7 +210,7 @@ class GoodsController extends Controller
         /*dd($id);*/
 
         $res = Goods::find($id);
-
+        //dd($res);
         //根据id查询相关的商品图片信息
         $gimg = Goodsimg::where('gid',$id)->get();
         /*$gimg = $gimg->toArray();*/
