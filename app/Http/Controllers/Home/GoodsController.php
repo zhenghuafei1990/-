@@ -41,7 +41,7 @@ class GoodsController extends Controller
     public function floor($id)
     {
         $arr_tid = DB::table('type')->where('path','like',"%,$id,%")->pluck('tid');
-        $rs = DB::table('goods')->whereIn('tid',$arr_tid)->paginate(20);
+        $rs = DB::table('goods')->whereIn('tid',$arr_tid)->paginate(8);
         $res = DB::table('goods')->orderBy('stock','asc')->take(10)->get();
         //dd($rs);
         return view('/home/goods/list_floor',[
