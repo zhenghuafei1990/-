@@ -29,7 +29,7 @@ class GoodsController extends Controller
     public function details($id)
     {
     	$rs = (DB::table('goods')->where('id',$id)->get())[0];
-    	$res = DB::table('goods')->orderBy('stock','asc')->take(10)->get();
+    	$res = DB::table('goods')->orderBy('stock','asc')->take(6)->get();
         $gpic = DB::table('goodspicture')->where('gid',$id)->get()->toArray();
 
         // $comment = Goods::with(['comments'=>function($query){
