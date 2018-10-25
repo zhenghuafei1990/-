@@ -44,12 +44,7 @@
                     </div>
                 </div>
 
-                <div class="mws-form-row">
-                    <label class="mws-form-label">地址:</label>
-                    <div class="mws-form-item">
-                        <input type="text" name="addr" value="{{$res->addr}}" class="small">
-                    </div>
-                </div>
+            
 
                 <div class="mws-form-row">
                     <label class="mws-form-label">电话:</label>

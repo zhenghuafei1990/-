@@ -23,7 +23,7 @@ class EcommendController extends Controller
     public function index(Request $request)
     {
     	$gname = $request->input('gname');
-    	$fenye = Ecommend::where('gname','like','%'.$gname.'%')->paginate($request->input('num',5));
+    	$fenye = DB::table('goods')->orderBy('stock','desc')->take(6)->get();
 
         
 
