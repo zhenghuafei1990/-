@@ -109,7 +109,7 @@
                         
                         <td class="">
                            
-                           <img src="{{$v->picture}}">
+                           <img src="/{{$v->picture}}">
                            
                         </td>
                         
@@ -213,7 +213,7 @@
             
 
             <div class="dataTables_paginate paging_full_numbers" id="DataTables_Table_1_paginate">
-           {{$fenye->appends($request->all())->links()}}
+           
 
               
             </div>
