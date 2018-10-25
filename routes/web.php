@@ -147,6 +147,16 @@ Route::group(['middleware'=>'adminlogin'],function(){
 	//将数据存入到session
 	Route::any('/home/order/setinfo','Home\OrdersController@setinfo');
 
+	//前台商品搜索
+	Route::any('/home/goods/search','Home\GoodsController@search');
+	//前台商品主类别列表页
+	Route::any('/home/goods/floor/{id}','Home\GoodsController@floor');
+	//前台商品主类详情页
+	Route::any('/home/goods/floor_details/{id}','Home\GoodsController@floor_details');
+	//前台商品列表页
+	Route::any('/home/goods/list/{id}','Home\GoodsController@list');
+	//前台商品详情页
+	Route::any('/home/goods/details/{id}','Home\GoodsController@details');
 
 
 Route::group(['middleware' => 'checklogin'],function(){
@@ -206,20 +216,7 @@ Route::group(['middleware' => 'checklogin'],function(){
 	Route::any('/home/retreat/index','Home\RetreatController@index');
 	
 	Route::any('/home/comment/create/{id}','Home\CommentController@create');
-
-
-	//前台商品列表页
-	Route::any('/home/goods/list/{id}','Home\GoodsController@list');
-
-	//前台商品详情页
-	Route::any('/home/goods/details/{id}','Home\GoodsController@details');
-
-	//前台商品搜索
-	Route::any('/home/goods/search','Home\GoodsController@search');
-	//前台商品主类别列表页
-	Route::any('/home/goods/floor/{id}','Home\GoodsController@floor');
-	//前台商品主类详情页
-	Route::any('/home/goods/floor_details/{id}','Home\GoodsController@floor_details');
+	
 	//前台视频页面
 	Route::any('/home/video','Home\VideoController@index');
 	Route::any('/home/video/select','Home\VideoController@select');
